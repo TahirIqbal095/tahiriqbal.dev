@@ -8,8 +8,8 @@ export default function ProfilePicture() {
       }
       alt="Profile picture"
       className="rounded-xl object-cover"
-      width={300}
-      height={400}
+      width={250}
+      height={350}
     />
   );
 }
