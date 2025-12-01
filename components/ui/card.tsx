@@ -31,7 +31,7 @@ const CardHeader = ({ className, ...props }: React.ComponentProps<"div">) => {
 };
 
 const CardTitle = ({ className, ...props }: React.ComponentProps<"h3">) => (
-  <h3 data-slot="card-title" className={cn("", className)} {...props} />
+  <h3 data-slot="card-title" className={cn(className)} {...props} />
 );
 
 const CardLabel = ({ className, ...props }: React.ComponentProps<"p">) => (
@@ -47,7 +47,7 @@ const CardContent = ({ className, ...props }: React.ComponentProps<"div">) => (
 );
 
 const CardFooter = ({ className, ...props }: React.ComponentProps<"div">) => (
-  <div data-slot="card-footer" className={cn("", className)} {...props} />
+  <div data-slot="card-footer" className={cn(className)} {...props} />
 );
 
 export { Card, CardHeader, CardTitle, CardLabel, CardContent, CardFooter };
