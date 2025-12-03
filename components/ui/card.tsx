@@ -31,7 +31,11 @@ const CardHeader = ({ className, ...props }: React.ComponentProps<"div">) => {
 };
 
 const CardTitle = ({ className, ...props }: React.ComponentProps<"h3">) => (
-  <h3 data-slot="card-title" className={cn(className)} {...props} />
+  <h3
+    data-slot="card-title"
+    className={cn("text-card-foreground", className)}
+    {...props}
+  />
 );
 
 const CardLabel = ({ className, ...props }: React.ComponentProps<"p">) => (

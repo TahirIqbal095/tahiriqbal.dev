@@ -5,7 +5,7 @@ import { Separator } from "./ui/separator";
 
 export default function AddressCard() {
   return (
-    <Card className="relative overflow-hidden h-56 p-2 group">
+    <Card className="relative overflow-hidden h-full min-h-52 p-2 group">
       {/* Background image */}
       <Image
         src={MapImage}
@@ -16,7 +16,7 @@ export default function AddressCard() {
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-black/10 z-10" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/40 to-black/10 z-10" />
 
       {/* Foreground content */}
       <div className="relative z-20">
@@ -24,7 +24,7 @@ export default function AddressCard() {
           <CardTitle>Location</CardTitle>
           <CardLabel>Kashmir</CardLabel>
         </div>
-        <Separator className="bg-white/40" />
+        <Separator />
       </div>
     </Card>
   );
