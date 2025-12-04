@@ -5,7 +5,7 @@ import React from "react";
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <SiteHeader />
         <main className="w-full overflow-x-hidden px-2">{children}</main>
         <SiteFooter />

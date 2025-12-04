@@ -12,7 +12,7 @@ const Card = ({
     <Comp
       data-slot="card"
       className={cn(
-        "bg-card p-4 rounded-lg shadow-md border text-sm",
+        "bg-card p-4 rounded-lg shadow-md border border-muted-foreground/60 text-sm",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ const CardHeader = ({ className, ...props }: React.ComponentProps<"div">) => {
 const CardTitle = ({ className, ...props }: React.ComponentProps<"h3">) => (
   <h3
     data-slot="card-title"
-    className={cn("text-card-foreground", className)}
+    className={cn("text-card-foreground font-medium", className)}
     {...props}
   />
 );
