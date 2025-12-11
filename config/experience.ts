@@ -1,26 +1,30 @@
-export const experienceConfig = [
-  {
-    title: "Senior Software Engineer at TechCorp",
-    period: "Jan 2022 - Present",
-    location: "New York, NY",
-    workType: "Remote",
-    description:
-      "Leading a team of developers to build scalable web applications using React and Node.js.",
-  },
-  {
-    title: "Software Engineer at WebSolutions",
-    period: "Jun 2019 - Dec 2021",
-    location: "San Francisco, CA",
-    workType: "On-site",
-    description:
-      "Developed and maintained client websites, ensuring optimal performance and user experience.",
-  },
-  {
-    title: "Intern at CodeFactory",
-    period: "Jan 2018 - May 2019",
-    location: "Austin, TX",
-    workType: "Hybrid",
-    description:
-      "Assisted in the development of internal tools and gained experience in full-stack development.",
-  },
-];
+export const experienceConfig = {
+  title: "Experience & Education",
+  label: "Updated Dec 2025",
+  footer: "Always iterating on craft & impact",
+  experiences: [
+    {
+      title: "Master in Computer Applications",
+      period: "Jul 2023 - Aug 2025",
+      location: "Kashmir University",
+      workType: "On-campus",
+      description: "Completed a master's in computer science.",
+    },
+    {
+      title: "Frontend Developer",
+      period: "Apr 2025",
+      location: "SmartHelio",
+      workType: "Freelance",
+      description:
+        "Engineered a production-grade React frontend for an AI chatbot.",
+    },
+    {
+      title: "Freelance Full-stack Developer",
+      period: "Sep 2024",
+      location: "Remote",
+      workType: "Freelance",
+      description:
+        "Designed and delivered Mounteco.com — a production-ready full-stack travel platform.",
+    },
+  ],
+};

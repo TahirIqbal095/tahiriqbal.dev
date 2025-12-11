@@ -5,7 +5,7 @@ import { ExperienceAndEdu } from "@/components/experience-education";
 
 export default function LandingPage() {
   return (
-    <div className="grid grid-cols-6 grid-rows-5 gap-6 mt-6">
+    <div className="grid grid-cols-6 grid-rows-4 gap-6 mt-6">
       <div className="col-span-1 row-span-1">
         <AddressCard />
       </div>
@@ -15,7 +15,7 @@ export default function LandingPage() {
       <div className="col-span-2 row-span-1">
         <AboutMe />
       </div>
-      <div className="col-span-2 row-span-3">
+      <div className="col-span-2 row-span-2">
         <ExperienceAndEdu />
       </div>
     </div>

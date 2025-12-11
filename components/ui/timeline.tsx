@@ -1,3 +1,6 @@
+import { MapPin } from "lucide-react";
+import { Badge } from "./badge";
+
 type TimelineProps = {
   title: string;
   period: string;
@@ -20,11 +23,18 @@ const Timeline = ({ experience }: { experience: TimelineProps[] }) => {
           <div className="flex gap-2 relative">
             <div className="size-3 bg-primary rounded-full absolute -left-3 top-0" />
             <div className="ml-3">
-              <h3 className="text-base font-semibold">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">
-                {item.period} | {item.location} | {item.workType}
+              <div className="flex justify-between items-center">
+                <h3 className="text-base font-semibold">{item.title}</h3>
+                <Badge>{item.workType}</Badge>
+              </div>
+              <p className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span>{item.period}</span>
+                <span className="flex items-center gap-px">
+                  <MapPin size={14} />
+                  <span>{item.location}</span>
+                </span>
               </p>
-              <p className="mt-2 text-base">{item.description}</p>
+              <p className="mt-2 text-sm">{item.description}</p>
             </div>
           </div>
         </div>
