@@ -3,7 +3,7 @@ import AddressCard from "@/components/address-card";
 import { CurrentStatus } from "@/components/current-status";
 import { ExperienceAndEdu } from "@/components/experience-education";
 
-export default function LandingPage() {
+export default async function LandingPage() {
   return (
     <div className="grid grid-cols-6 grid-rows-4 gap-6 mt-6">
       <div className="col-span-1 row-span-1">
