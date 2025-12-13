@@ -1,7 +1,7 @@
-import AboutMe from "@/components/about-me";
-import AddressCard from "@/components/address-card";
-import { CurrentStatus } from "@/components/current-status";
-import { ExperienceAndEdu } from "@/components/experience-education";
+import AboutMe from "@/components/landing/about-me";
+import AddressCard from "@/components/landing/address-card";
+import { CurrentStatus } from "@/components/landing/current-status";
+import { ExperienceAndEdu } from "@/components/landing/experience-education";
 
 export default async function LandingPage() {
   return (
