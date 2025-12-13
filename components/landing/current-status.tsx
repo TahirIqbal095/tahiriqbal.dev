@@ -1,6 +1,6 @@
 import { File, Folder } from "lucide-react";
-import { Card, CardHeader, CardTitle } from "./ui/card";
-import { Separator } from "./ui/separator";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { statusConfig } from "@/config/status";
 
 export function CurrentStatus() {

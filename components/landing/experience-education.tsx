@@ -5,9 +5,9 @@ import {
   CardHeader,
   CardLabel,
   CardTitle,
-} from "./ui/card";
-import { Separator } from "./ui/separator";
-import { Timeline } from "./ui/timeline";
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { Timeline } from "@/components/ui/timeline";
 import { experienceConfig } from "@/config/experience";
 
 function ExperienceAndEdu() {

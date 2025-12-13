@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Card, CardLabel, CardTitle } from "./ui/card";
+import { Card, CardLabel, CardTitle } from "@/components/ui/card";
 import MapImage from "@/public/assets/map.webp";
-import { Separator } from "./ui/separator";
+import { Separator } from "@/components/ui/separator";
 
 export default function AddressCard() {
   return (

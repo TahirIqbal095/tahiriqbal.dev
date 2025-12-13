@@ -5,15 +5,15 @@ import {
   CardLabel,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "./ui/separator";
+import { Separator } from "@/components/ui/separator";
 import { aboutConfig } from "@/config/about";
-import { Badge } from "./ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { TypescriptIcon } from "@/components/svgs/typescript";
-import { Bun } from "./svgs/bun";
-import NextJs from "./svgs/nextjs";
-import Postgresql from "./svgs/postgres";
+import { Bun } from "@/components/svgs/bun";
+import NextJs from "@/components/svgs/nextjs";
+import Postgresql from "@/components/svgs/postgres";
 
-export default function AboutMe() {
+export default function AboutMe()  {
   return (
     <Card className="p-2 h-full leading-6">
       <CardHeader>

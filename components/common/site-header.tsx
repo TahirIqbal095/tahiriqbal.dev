@@ -1,5 +1,5 @@
 import Logo from "./logo";
-import { ThemeToggleButton } from "./toggle-theme";
+import { ThemeToggleButton } from "@/components/toggle-theme";
 
 export default function SiteHeader() {
   return (
