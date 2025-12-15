@@ -1,10 +1,11 @@
 "use client";
 
+import { Link } from "next-view-transitions";
 import Image from "next/image";
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-3">
+    <Link href={"/"} className="flex items-center gap-3">
       <Image
         src={"/assets/logo-img.png"}
         alt="Logo"
@@ -17,7 +18,7 @@ const Logo = () => {
         <h1 className="text-primary/90 font-medium text-sm">Tahir Iqbal</h1>
         <p className="text-xs text-muted-foreground">Software Engineer</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

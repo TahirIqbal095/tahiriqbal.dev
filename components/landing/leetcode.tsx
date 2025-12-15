@@ -29,12 +29,12 @@ export function Leetcode({ stats }: { stats: LeetcodeStats }) {
 
   return (
     <Card className="relative space-y-2">
-      <Link
+      <a
         href={"https://leetcode.com/u/tahiriqbal095"}
         className="absolute inset-0 cursor-pointer z-10"
         target="_blank"
       />
-      <CardHeader className="pb-0 z-10 relative">
+      <CardHeader className="pb-0 relative">
         <div className="flex items-center justify-between">
           <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
             <Trophy className="w-4 h-4 text-[#FFA116]" />
