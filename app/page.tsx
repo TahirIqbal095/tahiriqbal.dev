@@ -22,7 +22,7 @@ export default async function LandingPage() {
         <ExperienceAndEdu />
       </div>
 
-      <div className="col-span-2 row-span-2">
+      <div className="col-span-2 row-span-1">
         <Leetcode stats={stats} />
       </div>
     </div>
