@@ -17,8 +17,8 @@ export default function SiteFooter() {
         <p>© {new Date().getFullYear()} All rights reserved.</p>
       </div>
       <div className="flex gap-3">
-        {footerData.links.map((link) => (
-          <Link href={link.href} target="_blank">
+        {footerData.links.map((link, idx) => (
+          <Link key={idx} href={link.href} target="_blank">
             <IconWrapper>{link.icon}</IconWrapper>
           </Link>
         ))}
