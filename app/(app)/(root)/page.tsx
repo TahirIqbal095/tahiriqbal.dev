@@ -2,6 +2,7 @@ import AboutMe from "@/components/landing/about-me";
 import AddressCard from "@/components/landing/address-card";
 import { CurrentStatus } from "@/components/landing/current-status";
 import { ExperienceAndEdu } from "@/components/landing/experience-education";
+import { Leetcode } from "@/components/landing/leetcode";
 
 export default async function LandingPage() {
   return (
@@ -17,6 +18,10 @@ export default async function LandingPage() {
       </div>
       <div className="col-span-2 row-span-2">
         <ExperienceAndEdu />
+      </div>
+
+      <div className="col-span-2 row-span-2">
+        <Leetcode />
       </div>
     </div>
   );
