@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${poppins.className} antialiased`}>
         <ThemeProvider>
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto space-y-4">
             <SiteHeader />
             <main className="w-full overflow-x-hidden px-2">{children}</main>
             <SiteFooter />

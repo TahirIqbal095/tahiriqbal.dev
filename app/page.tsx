@@ -1,14 +1,16 @@
 import AboutMe from "@/components/landing/about-me";
-import AddressCard from "@/components/landing/address-card";
+import AddressCard from "@/components/landing/address";
+import { Blogs } from "@/components/landing/blogs";
 import { CurrentStatus } from "@/components/landing/current-status";
 import { ExperienceAndEdu } from "@/components/landing/experience-education";
 import { Leetcode } from "@/components/landing/leetcode";
+import { Projects } from "@/components/landing/projects";
 import { leetcodeStats } from "@/lib/leetcode-stats";
 
 export default async function LandingPage() {
   const stats = await leetcodeStats();
   return (
-    <div className="grid grid-cols-6 grid-rows-4 gap-6 mt-6">
+    <div className="grid grid-cols-6 grid-rows-4 gap-6">
       <div className="col-span-1 row-span-1">
         <AddressCard />
       </div>
@@ -21,9 +23,15 @@ export default async function LandingPage() {
       <div className="col-span-2 row-span-2">
         <ExperienceAndEdu />
       </div>
+      <div className="col-span-4 row-span-3">
+        <Projects />
+      </div>
 
       <div className="col-span-2 row-span-1">
         <Leetcode stats={stats} />
+      </div>
+      <div className="col-span-2 row-span-1">
+        <Blogs />
       </div>
     </div>
   );
