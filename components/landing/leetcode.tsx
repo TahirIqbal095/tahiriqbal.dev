@@ -1,58 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Trophy } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { LeetcodeStats } from "@/lib/leetcode-stats";
 
-interface LeetcodeStats {
-  status: string;
-  message: string;
-  totalSolved: number;
-  totalQuestions: number;
-  easySolved: number;
-  totalEasy: number;
-  mediumSolved: number;
-  totalMedium: number;
-  hardSolved: number;
-  totalHard: number;
-  acceptanceRate: number;
-  ranking: number;
-  contributionPoints: number;
-  reputation: number;
-}
-
-export function Leetcode() {
-  const [stats, setStats] = useState<LeetcodeStats | null>(null);
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const response = await fetch(
-          "https://leetcode-stats-api.herokuapp.com/tahiriqbal095"
-        );
-        const data = await response.json();
-
-        if (data.status === "error") {
-          console.log(data.message);
-        } else {
-          setStats(data);
-        }
-      } catch (err) {
-        console.log("Failed to fetch stats");
-      }
-    };
-
-    fetchStats();
-  }, []);
-
+export function Leetcode({ stats }: { stats: LeetcodeStats }) {
   // Calculate segments for the donut chart
   const totalQuestions = stats?.totalQuestions || 1;
 

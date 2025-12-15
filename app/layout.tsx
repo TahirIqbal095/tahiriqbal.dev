@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
+import SiteHeader from "@/components/common/site-header";
+import SiteFooter from "@/components/common/site-footer";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -21,8 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} ${poppins.className}  antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className={`${poppins.variable} ${poppins.className} antialiased`}>
+        <ThemeProvider>
+          <div className="max-w-7xl mx-auto">
+            <SiteHeader />
+            <main className="w-full overflow-x-hidden px-2">{children}</main>
+            <SiteFooter />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
