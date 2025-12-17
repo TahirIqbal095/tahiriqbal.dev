@@ -3,7 +3,7 @@ import AddressCard from "@/components/landing/address";
 import { Blogs } from "@/components/landing/blogs";
 import { CurrentStatus } from "@/components/landing/current-status";
 import { ExperienceAndEdu } from "@/components/landing/experience-education";
-import { Leetcode } from "@/components/landing/leetcode";
+import { LeetcodeStatsCard } from "@/components/landing/leetcode";
 import { Projects } from "@/components/landing/projects";
 import { leetcodeStats } from "@/lib/leetcode-stats";
 
@@ -28,7 +28,7 @@ export default async function LandingPage() {
       </div>
 
       <div className="col-span-2 row-span-1">
-        <Leetcode stats={stats} />
+        <LeetcodeStatsCard stats={stats} />
       </div>
       <div className="col-span-2 row-span-1">
         <Blogs />

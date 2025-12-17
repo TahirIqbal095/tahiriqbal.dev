@@ -3,10 +3,10 @@
 import { motion } from "motion/react";
 import { Trophy } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
 import { LeetcodeStats } from "@/lib/leetcode-stats";
+import { Separator } from "../ui/separator";
 
-export function Leetcode({ stats }: { stats: LeetcodeStats }) {
+export function LeetcodeStatsCard({ stats }: { stats: LeetcodeStats }) {
   // Calculate segments for the donut chart
   const totalQuestions = stats?.totalQuestions || 1;
 
@@ -35,10 +35,10 @@ export function Leetcode({ stats }: { stats: LeetcodeStats }) {
         target="_blank"
       />
       <CardHeader className="pb-0 relative">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-            <Trophy className="w-4 h-4 text-[#FFA116]" />
-            LeetCode Stats
+        <div className="flex items-center justify-between mb-1">
+          <CardTitle className="font-medium text-muted-foreground flex items-center gap-2">
+            <Trophy className="w-3 h-3 text-[#FFA116]" />
+            <span>LeetCode Stats</span>
           </CardTitle>
           <motion.div
             initial={{ scale: 0 }}
@@ -48,6 +48,7 @@ export function Leetcode({ stats }: { stats: LeetcodeStats }) {
             tahiriqbal095
           </motion.div>
         </div>
+        <Separator />
       </CardHeader>
 
       <CardContent className="pt-2 h-full flex flex-col justify-between relative">

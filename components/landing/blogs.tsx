@@ -8,7 +8,7 @@ import { Separator } from "../ui/separator";
 
 export const Blogs = () => {
   return (
-    <Card className="relative overflow-hidden w-full h-full pb-6 flex flex-col gap-3">
+    <Card className="relative overflow-hidden w-full h-full pb-4 flex flex-col gap-3">
       <CardHeader>
         <CardTitle className="mb-1">Blogs</CardTitle>
         <Separator />
@@ -24,7 +24,7 @@ export const Blogs = () => {
         );
       })}
 
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-card to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-30 bg-linear-to-t from-card to-transparent" />
       <CardFooter className="absolute left-1/2 -translate-x-1/2 bottom-2 text-center z-10">
         <Button asChild size={"sm"}>
           <Link href="/blogs">
