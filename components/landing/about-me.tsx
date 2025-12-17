@@ -13,9 +13,9 @@ import { Bun } from "@/components/svgs/bun";
 import NextJs from "@/components/svgs/nextjs";
 import Postgresql from "@/components/svgs/postgres";
 
-export default function AboutMe()  {
+export default function AboutMe() {
   return (
-    <Card className="p-2 h-full leading-6">
+    <Card className="h-full leading-6">
       <CardHeader>
         <div className="flex justify-between items-center mb-1 text-xs">
           <CardTitle>{aboutConfig.title}</CardTitle>

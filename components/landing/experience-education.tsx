@@ -12,7 +12,7 @@ import { experienceConfig } from "@/config/experience";
 
 function ExperienceAndEdu() {
   return (
-    <Card className="p-2 h-full">
+    <Card className="h-full">
       <CardHeader>
         <div className="flex flex-col mb-1 gap-3 sm:flex-row sm:items-end sm:justify-between">
           <CardTitle>{experienceConfig.title}</CardTitle>

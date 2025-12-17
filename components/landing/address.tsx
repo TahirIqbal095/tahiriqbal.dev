@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function AddressCard() {
   return (
-    <Card className="relative overflow-hidden p-2 group h-full">
+    <Card className="relative overflow-hidden group h-full">
       {/* Background image */}
       <Image
         src={MapImage}

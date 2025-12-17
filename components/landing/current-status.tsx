@@ -5,7 +5,7 @@ import { statusConfig } from "@/config/status";
 
 export function CurrentStatus() {
   return (
-    <Card className="p-2 h-full">
+    <Card className=" h-full">
       <CardHeader>
         <div className="flex justify-between items-center mb-1 text-xs text-white">
           <CardTitle>{statusConfig.title}</CardTitle>

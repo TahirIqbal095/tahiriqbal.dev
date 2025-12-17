@@ -12,7 +12,7 @@ const Card = ({
     <Comp
       data-slot="card"
       className={cn(
-        "bg-card p-4 rounded-lg border border-muted-foreground/60 text-primary/85 text-sm",
+        "bg-card p-2 rounded-lg border border-muted-foreground/60 text-primary/85 text-sm",
         className
       )}
       {...props}

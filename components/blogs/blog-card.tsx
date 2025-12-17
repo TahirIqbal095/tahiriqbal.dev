@@ -49,18 +49,21 @@ export default function BlogCard({
               size={landing ? 14 : 18}
             />
           </Link>
-          <p className={cn("text-muted-foreground text-xs")}>{date}</p>
+          {!landing && (
+            <p className={cn("text-muted-foreground text-xs")}>{date}</p>
+          )}
         </div>
-        {!landing && (
-          <p
-            className={cn(
-              "text-muted-foreground text-sm max-w-[72ch]",
-              landing && "text-xs"
-            )}
-          >
-            {description}
-          </p>
-        )}
+
+        <p
+          className={cn(
+            "text-muted-foreground text-sm max-w-[72ch]",
+            landing && "text-xs"
+          )}
+        >
+          {description.length > 65
+            ? description.slice(0, 65) + "..."
+            : description}
+        </p>
       </div>
     </div>
   );
