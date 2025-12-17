@@ -1,24 +1,9 @@
 import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allMyBlogs, MyBlogs } from "contentlayer/generated";
-
-function PostCard(post: MyBlogs) {
-  return (
-    <div className="mb-8">
-      <h2 className="mb-1 text-xl">
-        <Link
-          href={`/blogs/${post._raw.flattenedPath}`}
-          className="text-blue-700 hover:text-blue-900 dark:text-blue-400"
-        >
-          {post.title}
-        </Link>
-      </h2>
-      <time dateTime={post.date} className="mb-2 block text-xs text-gray-600">
-        {format(parseISO(post.date), "yyyy-MM-dd")}
-      </time>
-    </div>
-  );
-}
+import BlogCard from "@/components/blogs/blog-card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeftIcon } from "lucide-react";
 
 export default function Home() {
   const posts = allMyBlogs.sort((a, b) =>
@@ -26,13 +11,27 @@ export default function Home() {
   );
 
   return (
-    <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">
-        Next.js + Contentlayer Example
-      </h1>
-      {posts.map((post, idx) => (
-        <PostCard key={idx} {...post} />
-      ))}
+    <div className="space-y-1">
+      <Button className="group" asChild variant={"link"}>
+        <Link href={"/"}>
+          <ArrowLeftIcon
+            className="group-hover:-translate-x-1 transition-all"
+            size={20}
+          />
+          <span>Back</span>
+        </Link>
+      </Button>
+      <h1 className="text-3xl font-bold mb-4">Blogs</h1>
+      <article className="flex flex-col gap-6">
+        {posts.map((post, idx) => (
+          <BlogCard
+            key={idx}
+            landing={false}
+            {...post}
+            slug={post._raw.flattenedPath}
+          />
+        ))}
+      </article>
     </div>
   );
 }

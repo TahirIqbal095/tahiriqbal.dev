@@ -10,16 +10,16 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({ params }: Props) => {
-  const slug = (await params).slug;
+  const { slug } = await params;
   const post = allMyBlogs.find((post) => post._raw.flattenedPath === slug);
   if (!post) {
     notFound();
   }
-  return { title: post.title };
+  return { title: post.title, description: post.description };
 };
 
 export default async function BlogPage({ params }: Props) {
-  const slug = (await params).slug;
+  const { slug } = await params;
   const blog = allMyBlogs.find(
     (blog: MyBlogs) => blog._raw.flattenedPath === slug
   );

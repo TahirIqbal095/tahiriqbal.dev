@@ -26,9 +26,11 @@ export default function RootLayout({
       <html className={poppins.className} lang="en" suppressHydrationWarning>
         <body className={`antialiased tracking-tight`}>
           <ThemeProvider>
-            <div className="max-w-7xl mx-auto space-y-4">
+            <div className="relative max-w-7xl min-h-screen mx-auto space-y-4">
               <SiteHeader />
-              <main className="w-full overflow-x-hidden px-2">{children}</main>
+              <main className="w-full overflow-x-hidden py-20 px-2">
+                {children}
+              </main>
               <SiteFooter />
             </div>
           </ThemeProvider>
