@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { compareDesc, format, parseISO } from "date-fns";
-import { allMyBlogs, MyBlogs } from "contentlayer/generated";
+import { Link } from "next-view-transitions";
+import { compareDesc } from "date-fns";
+import { allMyBlogs } from "contentlayer/generated";
 import BlogCard from "@/components/blogs/blog-card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "lucide-react";

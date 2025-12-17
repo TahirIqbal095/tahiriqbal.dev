@@ -24,7 +24,7 @@ const CardHeader = ({ className, ...props }: React.ComponentProps<"div">) => {
   return (
     <div
       data-slot="card-header"
-      className={cn("text-foreground", className)}
+      className={cn("text-foreground text-xs", className)}
       {...props}
     />
   );

@@ -20,7 +20,7 @@ export default function AddressCard() {
 
       {/* Foreground content */}
       <div className="relative z-20">
-        <div className="flex justify-between items-center mb-1 text-xs text-white">
+        <div className="flex justify-between items-center mb-1">
           <CardTitle>Location</CardTitle>
           <CardLabel>Kashmir</CardLabel>
         </div>
