@@ -7,8 +7,9 @@ import { Project } from "@/types/projects";
 export const projects: Project[] = [
   {
     title: "LeetAid",
+    subTitle: "Chrome Extension for Leetcode",
     description:
-      "A comprehensive study platform with notes, flashcards, quizzes, AI chatbot, and interactive learning tools",
+      "A Chrome extension that provides tailored hints for coding problems on Leetcode, empowering users to solve problems while preserving their creativity and intuition.",
     image: "/projects/leetaid.png",
     link: "https://leetaid-landing-page.vercel.app/",
     technologies: [
@@ -19,14 +20,15 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/tahiriqbal095/leetaid",
     live: "https://leetaid-landing-page.vercel.app/",
-    details: false,
+    details: true,
     projectDetailsPageSlug: "/projects/leetaid",
     isWorking: true,
   },
   {
     title: "LeetAid",
+    subTitle: "Chrome Extension for Leetcode",
     description:
-      "A comprehensive study platform with notes, flashcards, quizzes, AI chatbot, and interactive learning tools",
+      "A Chrome extension that provides tailored hints for coding problems on Leetcode, empowering users to solve problems while preserving their creativity and intuition.",
     image: "/projects/leetaid.png",
     link: "https://leetaid-landing-page.vercel.app/",
     technologies: [
