@@ -2,11 +2,22 @@
 
 import { motion } from "motion/react";
 import { Trophy } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { LeetcodeStats } from "@/lib/leetcode-stats";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Separator } from "../ui/separator";
+import { LeetcodeStats, LeetCodeSubmission } from "@/types/leetcode";
 
-export function LeetcodeStatsCard({ stats }: { stats: LeetcodeStats }) {
+interface Props {
+  stats: LeetcodeStats;
+  submissions: LeetCodeSubmission[] | null;
+}
+
+export function LeetcodeStatsCard({ stats, submissions }: Props) {
   // Calculate segments for the donut chart
   const totalQuestions = stats?.totalQuestions || 1;
 
@@ -135,6 +146,10 @@ export function LeetcodeStatsCard({ stats }: { stats: LeetcodeStats }) {
           </div>
         </div>
       </CardContent>
+      <CardFooter className="mt-4">
+        <h3 className="text-sm">Recent Submissions</h3>
+        {submissions && <SubmissionTicker submissions={submissions} />}
+      </CardFooter>
     </Card>
   );
 }
@@ -227,6 +242,61 @@ function LegendItem({
         <span className="font-semibold text-foreground">{count}</span>
         <span className="text-muted-foreground/50">/{total}</span>
       </div>
+    </div>
+  );
+}
+
+function SubmissionTicker({
+  submissions,
+}: {
+  submissions: LeetCodeSubmission[];
+}) {
+  if (!submissions.length) return null;
+
+  const tickerItems = [...submissions, ...submissions].filter(
+    (sub) => sub.statusDisplay === "Accepted"
+  );
+
+  return (
+    <div className="relative h-16 w-full overflow-hidden mt-2">
+      {/* Gradient Masks */}
+      <div className="absolute top-0 left-0 right-0 h-4 bg-linear-to-b from-card to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-4 bg-linear-to-t from-card to-transparent z-10 pointer-events-none" />
+      <motion.div
+        animate={{ y: ["0%", "-50%"] }}
+        transition={{
+          duration: 20,
+          ease: "easeIn",
+          repeat: Infinity,
+        }}
+        className="flex flex-col gap-2 py-2 mt-2"
+        whileHover={{
+          animationPlayState: "paused",
+        }}
+      >
+        {tickerItems.map((sub, i) => (
+          <div
+            key={`${sub.titleSlug}-${i}`}
+            className="flex items-center justify-between px-4 text-[10px]"
+          >
+            <span className="font-medium truncate max-w-[150px] text-muted-foreground">
+              {sub.title}
+            </span>
+            <div className="flex items-center gap-2 opacity-80">
+              <span
+                className={`px-1.5 py-0.5 rounded ${
+                  sub.statusDisplay === "Accepted"
+                    ? "bg-green-500/10 text-green-600"
+                    : "bg-red-500/10 text-red-600"
+                }`}
+              >
+                {sub.statusDisplay}
+              </span>
+              <span className="text-muted-foreground/50">{sub.lang}</span>
+            </div>
+          </div>
+        ))}
+      </motion.div>
     </div>
   );
 }

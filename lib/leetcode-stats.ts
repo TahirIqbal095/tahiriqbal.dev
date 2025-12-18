@@ -1,19 +1,5 @@
-export interface LeetcodeStats {
-  status: string;
-  message: string;
-  totalSolved: number;
-  totalQuestions: number;
-  easySolved: number;
-  totalEasy: number;
-  mediumSolved: number;
-  totalMedium: number;
-  hardSolved: number;
-  totalHard: number;
-  acceptanceRate: number;
-  ranking: number;
-  contributionPoints: number;
-  reputation: number;
-}
+import { LeetcodeStats } from "@/types/leetcode";
+
 export async function leetcodeStats(): Promise<LeetcodeStats> {
   const data = await fetch(
     "https://leetcode-stats-api.herokuapp.com/tahiriqbal095",
