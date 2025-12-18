@@ -10,9 +10,9 @@ export const Projects = () => {
         <CardTitle className="mb-1">Projects</CardTitle>
         <Separator />
       </CardHeader>
-      <CardContent className="flex items-center gap-4">
-        {projects.map((project) => (
-          <ProjectCard project={project} />
+      <CardContent className="flex flex-col md:flex-row items-center gap-6 md:gap-4">
+        {projects.map((project, idx) => (
+          <ProjectCard key={idx} project={project} />
         ))}
       </CardContent>
     </Card>

@@ -1,9 +1,16 @@
+"use client";
 import { IconWrapper } from "./icon-wrapper";
 import { footerData } from "@/config/footer";
+import { motion } from "motion/react";
 
 export default function SiteFooter() {
   return (
-    <footer className="absolute bottom-0 left-0 right-0 border-t px-2 py-2 flex items-center justify-between text-muted-foreground">
+    <motion.footer
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      className="absolute bottom-0 left-0 right-0 border-t px-2 py-2 flex items-center justify-between text-muted-foreground"
+    >
       <div className="flex flex-col gap-1 text-xs">
         <p>
           {footerData.title}{" "}
@@ -22,6 +29,6 @@ export default function SiteFooter() {
           </a>
         ))}
       </div>
-    </footer>
+    </motion.footer>
   );
 }

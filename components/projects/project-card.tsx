@@ -20,14 +20,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
       whileTap={{ scale: 0.98 }}
-      className="bg-secondary rounded-lg overflow-hidden border shadow-lg"
+      className="rounded-lg overflow-hidden border h-full"
     >
       <div>
         <Image
           src={project.image}
           alt={project.title}
           width={500}
-          height={500}
+          height={700}
           loading="lazy"
           className="rounded-t-lg object-cover"
         />
@@ -37,7 +37,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div>
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold">{project.title}</h2>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               {project.live && (
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -74,10 +74,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         <div>
-          <h3 className="text-base md:text-lg">Technologies</h3>
+          <h3 className="text-sm md:text-base">Technologies</h3>
           <div className="flex items-center">
-            {project.technologies.map((technology) => (
-              <Tooltip>
+            {project.technologies.map((technology, idx) => (
+              <Tooltip key={idx}>
                 <TooltipTrigger asChild>
                   <Button variant="ghost" size={"icon"}>
                     {technology.icon}
@@ -93,13 +93,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         <div className="flex items-center justify-between">
           {project.isWorking ? (
-            <p className="items-center gap-2 text-xs text-secondary shadow bg-green-100 inline-flex px-2 py-1 rounded">
+            <p className="items-center gap-2 text-xs text-black/90 shadow bg-green-100 inline-flex px-2 py-1 rounded">
               <span className="h-2 w-2 rounded-full bg-green-500" /> All System
               Operational
             </p>
           ) : (
             <div>
-              <p className="items-center gap-2 text-xs text-secondary shadow bg-red-100 inline-flex px-2 py-1 rounded">
+              <p className="items-center gap-2 text-xs text-black/90 shadow bg-red-100 inline-flex px-2 py-1 rounded">
                 <span className="h-2 w-2 rounded-full bg-red-500" /> Building
               </p>
             </div>

@@ -6,33 +6,34 @@ import { ExperienceAndEdu } from "@/components/landing/experience-education";
 import { LeetcodeStatsCard } from "@/components/landing/leetcode";
 import { Projects } from "@/components/landing/projects";
 import { leetcodeStats } from "@/lib/leetcode-stats";
+import { BentoCard, BentoGrid } from "@/components/landing/bento-grid";
 
 export default async function LandingPage() {
   const stats = await leetcodeStats();
   return (
-    <div className="grid grid-cols-6 grid-rows-4 gap-6">
-      <div className="col-span-1 row-span-1">
+    <BentoGrid className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-6">
+      <BentoCard className="col-span-1 ">
         <AddressCard />
-      </div>
-      <div className="col-span-1 row-span-1">
+      </BentoCard>
+      <BentoCard className="col-span-1 ">
         <CurrentStatus />
-      </div>
-      <div className="col-span-2 row-span-1">
+      </BentoCard>
+      <BentoCard className="col-span-2 md:col-span-2 lg:col-span-2">
         <AboutMe />
-      </div>
-      <div className="col-span-2 row-span-2">
+      </BentoCard>
+      <BentoCard className="col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2">
         <ExperienceAndEdu />
-      </div>
-      <div className="col-span-4 row-span-3">
+      </BentoCard>
+      <BentoCard className="col-span-2 md:col-span-2 lg:col-span-4 lg:row-span-3">
         <Projects />
-      </div>
+      </BentoCard>
 
-      <div className="col-span-2 row-span-1">
+      <BentoCard className="col-span-2 lg:col-span-2">
         <LeetcodeStatsCard stats={stats} />
-      </div>
-      <div className="col-span-2 row-span-1">
+      </BentoCard>
+      <BentoCard className="col-span-2 lg:col-span-2 ">
         <Blogs />
-      </div>
-    </div>
+      </BentoCard>
+    </BentoGrid>
   );
 }

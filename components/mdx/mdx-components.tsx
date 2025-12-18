@@ -71,7 +71,7 @@ const components = {
     ...props
   }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className={`mt-6 border-l-4 border-primary pl-6 italic bg-muted/50 py-2 pr-4 rounded-r-lg ${className}`}
+      className={`mt-6 border-l-4 border-primary pl-6 italic py-2 pr-4 rounded-r-lg ${className}`}
       {...props}
     />
   ),
@@ -106,7 +106,7 @@ const components = {
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre
-      className={`mb-4 mt-6 overflow-x-auto rounded-lg border bg-muted/50 px-4 py-4 ${className}`}
+      className={`mb-4 mt-6 overflow-x-auto rounded-lg border dark:bg-muted/50 px-4 py-4 ${className}`}
       {...props}
     />
   ),
