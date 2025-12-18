@@ -36,7 +36,7 @@ export default async function BlogPage({ params }: Props) {
   }
 
   return (
-    <article className="container mx-auto max-w-3xl space-y-12 py-6 lg:py-10">
+    <article className="container mx-auto max-w-3xl py-6 bg-card px-4">
       <div>
         <Button className="group" asChild variant={"link"}>
           <Link href={"/blogs"}>

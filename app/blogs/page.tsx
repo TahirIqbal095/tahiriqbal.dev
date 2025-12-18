@@ -11,7 +11,7 @@ export default function Home() {
   );
 
   return (
-    <div className="space-y-1">
+    <div className="bg-card p-4 border rounded-md">
       <Button className="group" asChild variant={"link"}>
         <Link href={"/"}>
           <ArrowLeftIcon
