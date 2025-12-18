@@ -5,12 +5,12 @@ import { projects } from "@/config/projects";
 
 export const Projects = () => {
   return (
-    <Card className="relative w-full h-full">
+    <Card className="relative w-full h-full flex flex-col">
       <CardHeader>
         <CardTitle className="mb-1">Projects</CardTitle>
         <Separator />
       </CardHeader>
-      <CardContent className="flex flex-col md:flex-row items-center gap-6 md:gap-4 mt-4">
+      <CardContent className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 mt-4">
         {projects.map((project, idx) => (
           <ProjectCard key={idx} project={project} />
         ))}
