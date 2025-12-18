@@ -31,22 +31,6 @@ const blogs = defineDocumentType(() => ({
   },
 }));
 
-const prettyCodeOptions = {
-  theme: "github-dark", // Shiki theme to use
-  onVisitLine(node: any) {
-    // Ensure blank lines are preserved
-    if (node.children.length === 0) {
-      node.children = [{ type: "text", value: " " }];
-    }
-  },
-  onVisitHighlightedLine(node: any) {
-    node.properties.className.push("line--highlighted");
-  },
-  onVisitHighlightedWord(node: any) {
-    node.properties.className.push("word--highlighted");
-  },
-};
-
 export default makeSource({
   contentDirPath: "data/blogs",
   documentTypes: [blogs],
@@ -54,11 +38,27 @@ export default makeSource({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
-      [rehypePrettyCode, prettyCodeOptions],
+      [
+        rehypePrettyCode as any,
+        {
+          theme: "github-dark",
+          keepBackground: false,
+          onvisitLine: (node: any) => {
+            if (node.children.length === 0) {
+              node.children = [
+                {
+                  type: "text",
+                  value: " ",
+                },
+              ];
+            }
+          },
+        },
+      ],
       [
         rehypeAutolinkHeadings,
         {
-          properties: { className: ["anchor"] },
+          behavior: "wrap",
         },
       ],
     ],

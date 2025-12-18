@@ -5,67 +5,73 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
-      className={`mt-2 scroll-m-20 text-4xl font-bold tracking-tight ${className}`}
+      className={`mt-2 scroll-m-20 text-4xl font-bold tracking-tight text-primary ${className}`}
       {...props}
     />
   ),
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className={`mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0 ${className}`}
+      className={`mt-10 scroll-m-20 border-b pb-1 text-2xl md:text-3xl font-semibold tracking-tight text-primary first:mt-0 ${className}`}
       {...props}
     />
   ),
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className={`mt-8 scroll-m-20 text-2xl font-semibold tracking-tight ${className}`}
+      className={`mt-8 scroll-m-20 text-2xl font-semibold tracking-tight text-primary ${className}`}
       {...props}
     />
   ),
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
-      className={`mt-8 scroll-m-20 text-xl font-semibold tracking-tight ${className}`}
+      className={`mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-primary ${className}`}
       {...props}
     />
   ),
   h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h5
-      className={`mt-8 scroll-m-20 text-lg font-semibold tracking-tight ${className}`}
+      className={`mt-8 scroll-m-20 text-lg font-semibold tracking-tight text-primary ${className}`}
       {...props}
     />
   ),
   h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h6
-      className={`mt-8 scroll-m-20 text-base font-semibold tracking-tight ${className}`}
+      className={`mt-8 scroll-m-20 text-base font-semibold tracking-tight text-primary ${className}`}
       {...props}
     />
   ),
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
-      className={`font-medium underline underline-offset-4 ${className}`}
+      className={`font-medium underline underline-offset-4 text-primary ${className}`}
       {...props}
     />
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className={`leading-7 not-first:mt-6 ${className}`} {...props} />
+    <p
+      className={`leading-7 not-first:mt-6 text-muted-foreground ${className}`}
+      {...props}
+    />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={`my-6 ml-6 list-disc [&>li]:mt-2 ${className}`} {...props} />
+    <ul
+      className={`my-6 ml-6 list-disc [&>li]:mt-2 text-muted-foreground ${className}`}
+      {...props}
+    />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
     <ol
-      className={`my-6 ml-6 list-decimal [&>li]:mt-2 ${className}`}
+      className={`my-6 ml-6 list-decimal [&>li]:mt-2 text-muted-foreground ${className}`}
       {...props}
     />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className={`mt-2 ${className}`} {...props} />
+    <li className={`mt-2 text-muted-foreground ${className}`} {...props} />
   ),
   blockquote: ({
     className,
     ...props
   }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
-      className={`mt-6 border-l-2 pl-6 italic ${className}`}
+      className={`mt-6 border-l-4 border-primary pl-6 italic bg-muted/50 py-2 pr-4 rounded-r-lg ${className}`}
       {...props}
     />
   ),
@@ -100,16 +106,13 @@ const components = {
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre
-      className={`mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4 ${className}`}
+      className={`mb-4 mt-6 overflow-x-auto rounded-lg border bg-muted/50 px-4 py-4 ${className}`}
       {...props}
     />
   ),
-  // code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-  //   <code
-  //     className={`relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold ${className}`}
-  //     {...props}
-  //   />
-  // ),
+  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <strong className={`font-bold text-primary ${className}`} {...props} />
+  ),
 };
 
 interface MdxProps {

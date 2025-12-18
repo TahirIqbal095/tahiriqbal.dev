@@ -3,7 +3,7 @@ import { footerData } from "@/config/footer";
 
 export default function SiteFooter() {
   return (
-    <footer className="absolute bottom-0 left-0 right-0 border-t py-2 flex items-center justify-between text-muted-foreground">
+    <footer className="absolute bottom-0 left-0 right-0 border-t px-2 py-2 flex items-center justify-between text-muted-foreground">
       <div className="flex flex-col gap-1 text-xs">
         <p>
           {footerData.title}{" "}
