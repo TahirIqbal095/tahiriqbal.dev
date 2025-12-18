@@ -7,11 +7,6 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { aboutConfig } from "@/config/about";
-import { Badge } from "@/components/ui/badge";
-import { TypescriptIcon } from "@/components/svgs/typescript";
-import { Bun } from "@/components/svgs/bun";
-import NextJs from "@/components/svgs/nextjs";
-import Postgresql from "@/components/svgs/postgres";
 
 export default function AboutMe() {
   return (
@@ -24,32 +19,7 @@ export default function AboutMe() {
         <Separator />
       </CardHeader>
       <CardContent>
-        <p>
-          <span>I build interactive web apps using</span>
-          <Badge>
-            <TypescriptIcon size="1rem" />
-            <span>Typescript</span>
-          </Badge>
-          <span>, </span>
-          <Badge>
-            <NextJs size="1rem" />
-            <span>Next.js</span>
-          </Badge>
-          <span>, </span>
-          <Badge>
-            <Bun size="1rem" />
-            <span>Bun</span>
-          </Badge>
-          <span> and </span>
-          <Badge>
-            <Postgresql size="1rem" />
-            <span>Postgress</span>
-          </Badge>
-          <span>
-            {" "}
-            . With a focus on UI design. Enthusiastic about Agentic Web, Web3
-          </span>
-        </p>
+        <p className="font-medium text-primary">{aboutConfig.description}</p>
       </CardContent>
     </Card>
   );
