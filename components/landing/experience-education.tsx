@@ -14,7 +14,7 @@ function ExperienceAndEdu() {
   return (
     <Card className="h-full">
       <CardHeader>
-        <div className="flex flex-col mb-1 gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex mb-1 gap-3 flex-row items-end justify-between">
           <CardTitle>{experienceConfig.title}</CardTitle>
           <CardLabel className="text-xs text-muted-foreground/70">
             {experienceConfig.label}

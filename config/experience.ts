@@ -11,20 +11,19 @@ export const experienceConfig = {
       description: "Completed a master's in computer science.",
     },
     {
+      title: "Full-stack Developer",
+      period: "june 2025 - Sept 2025",
+      location: "Rehbarpost",
+      workType: "Internship",
+      description: "Did an Internship as a Full-stack Developer at Rehbarpost",
+    },
+    {
       title: "Frontend Developer",
       period: "Apr 2025",
       location: "SmartHelio",
       workType: "Freelance",
       description:
         "Engineered a production-grade React frontend for an AI chatbot.",
-    },
-    {
-      title: "Freelance Full-stack Developer",
-      period: "Sep 2024",
-      location: "Remote",
-      workType: "Freelance",
-      description:
-        "Designed and delivered Mounteco.com — a production-ready full-stack travel platform.",
     },
   ],
 };
