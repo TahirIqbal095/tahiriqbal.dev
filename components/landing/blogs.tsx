@@ -14,14 +14,7 @@ export const Blogs = () => {
         <Separator />
       </CardHeader>
       {allMyBlogs.map((blog, idx) => {
-        return (
-          <BlogCard
-            key={idx}
-            landing={true}
-            {...blog}
-            slug={blog._raw.flattenedPath}
-          />
-        );
+        return <BlogCard key={idx} {...blog} slug={blog._raw.flattenedPath} />;
       })}
 
       <div className="absolute bottom-0 left-0 right-0 h-30 bg-linear-to-t from-card to-transparent" />

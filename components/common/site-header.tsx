@@ -3,6 +3,8 @@
 import Logo from "./logo";
 import { ThemeToggleButton } from "@/components/toggle-theme";
 import { motion } from "motion/react";
+import { Link } from "next-view-transitions";
+import { Button } from "../ui/button";
 
 export default function SiteHeader() {
   return (
@@ -13,7 +15,15 @@ export default function SiteHeader() {
       className="fixed max-w-7xl mx-auto backdrop-blur z-50 px-2 top-0 left-0 right-0 flex items-center justify-between border-b py-2"
     >
       <Logo />
-      <ThemeToggleButton start="top-right" />
+
+      <div className="flex items-center gap-6">
+        <Button asChild variant="link">
+          <Link href="/blogs" className="ml-2">
+            Blogs
+          </Link>
+        </Button>
+        <ThemeToggleButton start="top-right" />
+      </div>
     </motion.nav>
   );
 }

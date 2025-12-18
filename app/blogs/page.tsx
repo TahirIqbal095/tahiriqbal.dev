@@ -24,12 +24,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold mb-4">Blogs</h1>
       <article className="flex flex-col gap-6">
         {posts.map((post, idx) => (
-          <BlogCard
-            key={idx}
-            landing={false}
-            {...post}
-            slug={post._raw.flattenedPath}
-          />
+          <BlogCard key={idx} {...post} slug={post._raw.flattenedPath} />
         ))}
       </article>
     </div>
