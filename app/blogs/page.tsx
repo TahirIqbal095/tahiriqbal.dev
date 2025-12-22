@@ -11,17 +11,17 @@ export default function Home() {
   );
 
   return (
-    <div className="bg-card p-4 border rounded-md">
+    <div className="bg-card rounded-md border p-4">
       <Button className="group" asChild variant={"link"}>
         <Link href={"/"}>
           <ArrowLeftIcon
-            className="group-hover:-translate-x-1 transition-all"
+            className="transition-all group-hover:-translate-x-1"
             size={20}
           />
           <span>Back</span>
         </Link>
       </Button>
-      <h1 className="text-3xl font-bold mb-4">Blogs</h1>
+      <h1 className="mb-4 text-3xl font-bold">Blogs</h1>
       <article className="flex flex-col gap-6">
         {posts.map((post, idx) => (
           <BlogCard key={idx} {...post} slug={post._raw.flattenedPath} />
