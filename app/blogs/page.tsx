@@ -22,7 +22,7 @@ export default function Home() {
         </Link>
       </Button>
       <h1 className="mb-4 text-3xl font-bold">Blogs</h1>
-      <article className="flex flex-col gap-6">
+      <article className="border-border/50 relative my-4 ml-2 space-y-8 border-l border-dashed pl-6">
         {posts.map((post, idx) => (
           <BlogCard key={idx} {...post} slug={post._raw.flattenedPath} />
         ))}

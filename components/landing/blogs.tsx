@@ -8,17 +8,21 @@ import { Separator } from "../ui/separator";
 
 export const Blogs = () => {
   return (
-    <Card className="relative overflow-hidden w-full h-full pb-4 flex flex-col gap-3">
+    <Card className="relative flex h-full w-full flex-col gap-3 overflow-hidden pb-4">
       <CardHeader>
         <CardTitle className="mb-1">Blogs</CardTitle>
         <Separator />
       </CardHeader>
-      {allMyBlogs.map((blog, idx) => {
-        return <BlogCard key={idx} {...blog} slug={blog._raw.flattenedPath} />;
-      })}
+      <div className="border-border/50 relative my-2 ml-4 space-y-6 border-l border-dashed pl-6">
+        {allMyBlogs.slice(0, 3).map((blog, idx) => {
+          return (
+            <BlogCard key={idx} {...blog} slug={blog._raw.flattenedPath} />
+          );
+        })}
+      </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-30 bg-linear-to-t from-card to-transparent" />
-      <CardFooter className="absolute left-1/2 -translate-x-1/2 bottom-2 text-center z-10">
+      <div className="from-card absolute right-0 bottom-0 left-0 h-30 bg-linear-to-t to-transparent" />
+      <CardFooter className="absolute bottom-2 left-1/2 z-10 -translate-x-1/2 text-center">
         <Button asChild size={"sm"}>
           <Link href="/blogs">
             <span className="text-xs">View All</span>
