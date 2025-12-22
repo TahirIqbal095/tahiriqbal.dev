@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
 });
 
 export default function RootLayout({
@@ -24,15 +25,15 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html
-        className={`${inter.className} antialiased`}
+        className={`${inter.variable} ${inter.className} antialiased`}
         lang="en"
         suppressHydrationWarning
       >
-        <body className={`antialiased tracking-tight`}>
+        <body>
           <ThemeProvider>
-            <div className="relative max-w-7xl min-h-screen mx-auto space-y-4">
+            <div className="relative mx-auto min-h-screen max-w-7xl space-y-4">
               <SiteHeader />
-              <main className="w-full overflow-x-hidden py-20 px-2">
+              <main className="w-full overflow-x-hidden px-2 py-20">
                 {children}
               </main>
               <SiteFooter />

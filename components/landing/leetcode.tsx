@@ -42,19 +42,19 @@ export function LeetcodeStatsCard({ stats, submissions }: Props) {
     <Card className="relative space-y-2">
       <a
         href={"https://leetcode.com/u/tahiriqbal095"}
-        className="absolute inset-0 cursor-pointer z-10"
+        className="absolute inset-0 z-10 cursor-pointer"
         target="_blank"
       />
-      <CardHeader className="pb-0 relative">
-        <div className="flex items-center justify-between mb-1">
-          <CardTitle className="font-medium text-muted-foreground flex items-center gap-2">
-            <Trophy className="w-3 h-3 text-[#FFA116]" />
+      <CardHeader className="relative pb-0">
+        <div className="mb-1 flex items-center justify-between">
+          <CardTitle className="text-muted-foreground flex items-center gap-2 font-medium">
+            <Trophy className="h-3 w-3 text-[#FFA116]" />
             <span>LeetCode Stats</span>
           </CardTitle>
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="text-xs font-mono text-muted-foreground/50"
+            className="text-muted-foreground/50 font-mono text-xs"
           >
             tahiriqbal095
           </motion.div>
@@ -62,13 +62,13 @@ export function LeetcodeStatsCard({ stats, submissions }: Props) {
         <Separator />
       </CardHeader>
 
-      <CardContent className="pt-2 h-full flex flex-col justify-between relative">
-        <div className="flex items-center justify-between mt-4">
+      <CardContent className="relative flex h-full flex-col justify-between pt-2">
+        <div className="mt-4 flex items-center justify-between">
           {/* Donut Chart Area */}
-          <div className="relative w-32 h-32 flex items-center justify-center">
+          <div className="relative flex h-32 w-32 items-center justify-center">
             <svg
               viewBox="0 0 100 100"
-              className="w-full h-full transform -rotate-90"
+              className="h-full w-full -rotate-90 transform"
             >
               <circle
                 cx="50"
@@ -117,14 +117,14 @@ export function LeetcodeStatsCard({ stats, submissions }: Props) {
             {/* Center Text */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-2xl font-bold">{stats?.totalSolved}</span>
-              <span className="text-[10px] text-muted-foreground uppercase">
+              <span className="text-muted-foreground text-[10px] uppercase">
                 Solved
               </span>
             </div>
           </div>
 
           {/* Legend / Stats */}
-          <div className="flex flex-col gap-3 justify-center min-w-[120px]">
+          <div className="flex min-w-[120px] flex-col justify-center gap-3">
             <LegendItem
               label="Easy"
               count={easySolved}
@@ -233,13 +233,13 @@ function LegendItem({
   color: string;
 }) {
   return (
-    <div className="flex items-center justify-between text-xs w-full">
+    <div className="flex w-full items-center justify-between text-xs">
       <div className="flex items-center gap-2">
-        <div className={`w-2 h-2 rounded-full ${color}`} />
+        <div className={`h-2 w-2 rounded-full ${color}`} />
         <span className="text-muted-foreground font-medium">{label}</span>
       </div>
       <div className="font-mono">
-        <span className="font-semibold text-foreground">{count}</span>
+        <span className="text-foreground font-semibold">{count}</span>
         <span className="text-muted-foreground/50">/{total}</span>
       </div>
     </div>
@@ -258,33 +258,30 @@ function SubmissionTicker({
   );
 
   return (
-    <div className="relative h-16 w-full overflow-hidden mt-2">
+    <div className="relative mt-2 h-16 w-full overflow-hidden">
       {/* Gradient Masks */}
-      <div className="absolute top-0 left-0 right-0 h-4 bg-linear-to-b from-card to-transparent z-10 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-4 bg-linear-to-t from-card to-transparent z-10 pointer-events-none" />
+      <div className="from-card pointer-events-none absolute top-0 right-0 left-0 z-10 h-4 bg-linear-to-b to-transparent" />
+      <div className="from-card pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-4 bg-linear-to-t to-transparent" />
       <motion.div
         animate={{ y: ["0%", "-50%"] }}
         transition={{
           duration: 20,
-          ease: "easeIn",
+          ease: "linear",
           repeat: Infinity,
         }}
-        className="flex flex-col gap-2 py-2 mt-2"
-        whileHover={{
-          animationPlayState: "paused",
-        }}
+        className="mt-2 flex flex-col gap-2 py-2"
       >
         {tickerItems.map((sub, i) => (
           <div
             key={`${sub.titleSlug}-${i}`}
             className="flex items-center justify-between px-4 text-[10px]"
           >
-            <span className="font-medium truncate max-w-[150px] text-muted-foreground">
+            <span className="text-muted-foreground max-w-[150px] truncate font-medium">
               {sub.title}
             </span>
             <div className="flex items-center gap-2 opacity-80">
               <span
-                className={`px-1.5 py-0.5 rounded ${
+                className={`rounded px-1.5 py-0.5 ${
                   sub.statusDisplay === "Accepted"
                     ? "bg-green-500/10 text-green-600"
                     : "bg-red-500/10 text-red-600"
