@@ -19,10 +19,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
       viewport={{ once: true }}
-      className="group flex flex-col h-full bg-card rounded-md border transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+      className="group bg-card flex h-full flex-col rounded-md border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       {/* Image Container */}
-      <div className="relative overflow-hidden rounded-t-md aspect-video w-full border-b bg-muted/20">
+      <div className="bg-muted/20 relative aspect-video w-full overflow-hidden rounded-t-md border-b">
         <Image
           src={project.image}
           alt={project.title}
@@ -34,15 +34,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* Status Badge - Overlay */}
         <div className="absolute top-3 right-3 z-10">
           {project.isWorking ? (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-sm border shadow-sm text-[10px] font-medium text-emerald-600">
+            <div className="bg-background/90 flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium text-emerald-600 shadow-sm backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
               </span>
               Operational
             </div>
           ) : (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-sm border shadow-sm text-[10px] font-medium text-amber-600">
+            <div className="bg-background/90 flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium text-amber-600 shadow-sm backdrop-blur-sm">
               <span className="block h-2 w-2 rounded-full bg-amber-500" />
               Building
             </div>
@@ -50,14 +50,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-col flex-1 p-5 gap-4">
+      <div className="flex flex-1 flex-col gap-4 p-5">
         {/* Header */}
         <div className="flex items-start justify-between gap-2">
           <div className="space-y-1">
-            <h2 className="text-xl font-semibold tracking-tight leading-none group-hover:text-primary transition-colors">
+            <h2 className="group-hover:text-primary text-xl leading-none font-semibold tracking-tight transition-colors">
               {project.title}
             </h2>
-            <div className="flex gap-2 text-muted-foreground/50">
+            <div className="text-muted-foreground/50 flex gap-2">
               {project.subTitle}
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   <a
                     target="_blank"
                     href={project.live}
-                    className="p-2 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                    className="hover:bg-muted text-muted-foreground hover:text-foreground rounded-full p-2 transition-colors"
                   >
                     <Globe size={16} />
                   </a>
@@ -83,7 +83,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   <a
                     target="_blank"
                     href={project.github}
-                    className="p-2 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                    className="hover:bg-muted text-muted-foreground hover:text-foreground rounded-full p-2 transition-colors"
                   >
                     <Github size={16} />
                   </a>
@@ -93,7 +93,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             ) : (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <span className="p-2 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors">
+                  <span className="hover:bg-muted text-muted-foreground hover:text-foreground rounded-full p-2 transition-colors">
                     <Github size={16} />
                   </span>
                 </TooltipTrigger>
@@ -104,18 +104,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Description */}
-        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+        <p className="text-muted-foreground line-clamp-4 text-sm leading-relaxed">
           {project.description}
         </p>
 
-        <div className="mt-auto pt-4 flex items-center justify-between border-t border-border/50">
+        <div className="border-border/50 mt-auto flex items-center justify-between border-t pt-4">
           {/* Tech Stack */}
-          <div className="flex items-center -space-x-2 hover:space-x-1 transition-all">
+          <div className="flex items-center -space-x-2 transition-all hover:space-x-1">
             {project.technologies.slice(0, 4).map((tech, idx) => (
               <Tooltip key={idx}>
                 <TooltipTrigger asChild>
-                  <div className="bg-background rounded-full p-1.5 border shadow-sm z-0 hover:z-10 transition-all hover:scale-110">
-                    <div className="h-4 w-4 text-muted-foreground grayscale hover:grayscale-0 transition-all">
+                  <div className="bg-background z-0 rounded-full border p-1.5 shadow-sm transition-all hover:z-10 hover:scale-110">
+                    <div className="text-muted-foreground h-4 w-4 grayscale transition-all hover:grayscale-0">
                       {tech.icon}
                     </div>
                   </div>
@@ -124,7 +124,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               </Tooltip>
             ))}
             {project.technologies.length > 4 && (
-              <span className="text-[10px] text-muted-foreground/60 pl-3">
+              <span className="text-muted-foreground/60 pl-3 text-[10px]">
                 +{project.technologies.length - 4}
               </span>
             )}
@@ -135,13 +135,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               asChild
               variant="ghost"
               size="sm"
-              className="text-xs font-medium hover:bg-transparent hover:text-primary pr-0 gap-1 group/btn"
+              className="hover:text-primary group/btn gap-1 pr-0 text-xs font-medium hover:bg-transparent"
             >
               <Link href={project.projectDetailsPageSlug}>
                 Details
                 <ArrowUpRight
                   size={14}
-                  className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                  className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
                 />
               </Link>
             </Button>
