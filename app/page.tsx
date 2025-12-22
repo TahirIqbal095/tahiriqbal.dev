@@ -1,5 +1,5 @@
 import AboutMe from "@/components/landing/about-me";
-import AddressCard from "@/components/landing/address";
+import TimeCard from "@/components/landing/time-card";
 import { CurrentStatus } from "@/components/landing/current-status";
 import { ExperienceAndEdu } from "@/components/landing/experience-education";
 import { LeetcodeStatsCard } from "@/components/landing/leetcode";
@@ -16,7 +16,7 @@ export default async function LandingPage() {
   return (
     <BentoGrid className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-6">
       <BentoCard className="col-span-1 ">
-        <AddressCard />
+        <TimeCard />
       </BentoCard>
       <BentoCard className="col-span-1 ">
         <CurrentStatus />

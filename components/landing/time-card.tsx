@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function AddressCard() {
+export default function TimeCard() {
   const [time, setTime] = useState({
     hours: "00",
     minutes: "00",
@@ -38,7 +38,7 @@ export default function AddressCard() {
   }, []);
 
   return (
-    <Card className="relative h-[200px] md:h-full flex flex-col items-center justify-center bg-card border transition-colors group overflow-hidden">
+    <Card className="relative h-[200px] px-2 md:h-full flex flex-col items-center justify-center bg-card border transition-colors group overflow-hidden">
       {/* Ambient Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[16px_16px]" />
       <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-50" />
@@ -46,11 +46,15 @@ export default function AddressCard() {
       <div className="relative z-10 flex flex-col items-center gap-2">
         {/* Digital Clock */}
         <div className="flex items-start font-mono tracking-tighter leading-none select-none text-foreground/90">
-          <span className="text-5xl md:text-6xl font-bold">{time.hours}</span>
-          <span className="text-5xl md:text-6xl font-bold animate-pulse text-muted-foreground/50">
+          <span className="text-[42px] md:text-5xl font-bold">
+            {time.hours}
+          </span>
+          <span className="text-[42px] md:text-5xl font-bold animate-pulse text-muted-foreground/50">
             :
           </span>
-          <span className="text-5xl md:text-6xl font-bold">{time.minutes}</span>
+          <span className="text-[42px] md:text-5xl font-bold">
+            {time.minutes}
+          </span>
           <span className="text-lg md:text-xl font-medium text-muted-foreground/60 ml-2 mt-2 self-start">
             {time.ampm}
           </span>
