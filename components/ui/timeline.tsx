@@ -1,5 +1,5 @@
 "use client";
-import { Calendar, MapPin } from "lucide-react";
+import { BriefcaseBusiness, Calendar, MapPin } from "lucide-react";
 import { Badge } from "./badge";
 import { motion } from "motion/react";
 
@@ -48,7 +48,7 @@ const Timeline = ({ experience }: { experience: TimelineProps[] }) => {
                 {item.period}
               </span>
               <span className="flex items-center gap-1">
-                <MapPin className="size-3" />
+                <BriefcaseBusiness className="size-3" />
                 {item.location}
               </span>
             </div>

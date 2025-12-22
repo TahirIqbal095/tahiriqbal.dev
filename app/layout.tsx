@@ -4,11 +4,17 @@ import { ViewTransitions } from "next-view-transitions";
 import { ThemeProvider } from "@/providers/theme-provider";
 import SiteHeader from "@/components/common/site-header";
 import SiteFooter from "@/components/common/site-footer";
+import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Tahir Iqbal",
   description: "Personal Portfolio website of Tahir Iqbal",
 };
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export default function RootLayout({
   children,
@@ -18,7 +24,7 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html
-        className={"font-hanken-grotesk antialiased"}
+        className={`${inter.className} antialiased`}
         lang="en"
         suppressHydrationWarning
       >
