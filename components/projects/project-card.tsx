@@ -77,7 +77,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 <TooltipContent>Live Demo</TooltipContent>
               </Tooltip>
             )}
-            {project.github && (
+            {project.github ? (
               <Tooltip>
                 <TooltipTrigger asChild>
                   <a
@@ -89,6 +89,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   </a>
                 </TooltipTrigger>
                 <TooltipContent>Source Code</TooltipContent>
+              </Tooltip>
+            ) : (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="p-2 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors">
+                    <Github size={16} />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>Private Repository</TooltipContent>
               </Tooltip>
             )}
           </div>

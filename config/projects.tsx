@@ -29,11 +29,11 @@ export const projects: Project[] = [
   },
   {
     title: "Mockverse",
-    subTitle: "Prepration platform for competitive exams",
+    subTitle: "AI preparation platform for competitive exams",
     description:
-      "Mockverse is a web application that helps students prepare for competitive exams by providing them with mock tests and personalized feedback.",
+      "Mockverse is an AI-powered web application that helps students prepare for competitive exams by providing them with mock tests and personalized feedback.",
     image: "/projects/mockverse.png",
-    link: "https://mockverse.vercel.app/",
+    link: "https://mockverse-client-bdzf.vercel.app/",
     technologies: [
       { name: "TypeScript", icon: <TypeScript key="typescript" /> },
       { name: "Next.js", icon: <NextJs key="nextjs" /> },
@@ -42,8 +42,8 @@ export const projects: Project[] = [
       { name: "PostgreSQL", icon: <PostgreSQL key="postgresql" /> },
       { name: "shadcn/ui", icon: <Shadcn key="shadcn" /> },
     ],
-    github: "https://github.com/tahiriqbal095/mockverse",
-    live: "https://mockverse.vercel.app/",
+    github: "",
+    live: "https://mockverse-client-bdzf.vercel.app/",
     details: true,
     projectDetailsPageSlug: "/projects/mockverse",
     isWorking: false,
