@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { BlogFrontmatter, BlogPostPreview } from "@/types/blogs";
+import { cache } from "react";
 
 const BLOGS_DIR = path.join(process.cwd(), "data/blogs");
 
@@ -15,7 +16,7 @@ export function getAllBlogsSlug(): string[] {
     .map((file) => file.replace(/\.mdx$/, ""));
 }
 
-export function getBlogBySlug(slug: string) {
+export const getBlogBySlug = cache((slug: string) => {
   const fullPath = path.join(BLOGS_DIR, `${slug}.mdx`);
 
   if (!fs.existsSync(fullPath)) {
@@ -35,7 +36,7 @@ export function getBlogBySlug(slug: string) {
     frontmatter,
     content,
   };
-}
+});
 
 export function getBlogList(): BlogPostPreview[] {
   const slugs = getAllBlogsSlug();
