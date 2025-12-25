@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import BlogPreview from "@/components/blogs/blog-preview";
 import { Separator } from "@/components/ui/separator";
 import Tag from "@/components/ui/tag";
+import PacificoDashedHeading from "@/components/ui/pacifico-dashed-heading";
 
 export const metadata: Metadata = generateMetadata("/blogs");
 
@@ -17,7 +18,7 @@ export default function Home() {
   return (
     <section className="mx-auto mt-8 max-w-3xl space-y-6 px-2">
       <div className="w-full space-y-2 text-center">
-        <h1 className="text-4xl font-bold">Blogs</h1>
+        <PacificoDashedHeading>Blogs</PacificoDashedHeading>
         <p className="text-muted-foreground mx-auto max-w-lg text-sm">
           Thoughts, tutorials, and insights on engineering, and programming.
         </p>
