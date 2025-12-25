@@ -1,130 +1,190 @@
-"use client";
+import Image from "next/image";
+import React from "react";
 
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { CodeCopyButton } from "@/components/CodeCopyButton";
 
-const components = {
-  h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1
-      className={`mt-2 scroll-m-20 text-4xl font-bold tracking-tight text-primary ${className}`}
-      {...props}
-    />
-  ),
-  h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2
-      className={`mt-10 scroll-m-20 border-b pb-1 text-2xl md:text-3xl font-semibold tracking-tight text-primary first:mt-0 ${className}`}
-      {...props}
-    />
-  ),
-  h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3
-      className={`mt-8 scroll-m-20 text-2xl font-semibold tracking-tight text-primary ${className}`}
-      {...props}
-    />
-  ),
-  h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h4
-      className={`mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-primary ${className}`}
-      {...props}
-    />
-  ),
-  h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h5
-      className={`mt-8 scroll-m-20 text-lg font-semibold tracking-tight text-primary ${className}`}
-      {...props}
-    />
-  ),
-  h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h6
-      className={`mt-8 scroll-m-20 text-base font-semibold tracking-tight text-primary ${className}`}
-      {...props}
-    />
-  ),
-  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a
-      className={`font-medium underline underline-offset-4 text-primary ${className}`}
-      {...props}
-    />
-  ),
-  p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p
-      className={`leading-7 not-first:mt-6 text-muted-foreground ${className}`}
-      {...props}
-    />
-  ),
-  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul
-      className={`my-6 ml-6 list-disc [&>li]:mt-2 text-muted-foreground ${className}`}
-      {...props}
-    />
-  ),
-  ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol
-      className={`my-6 ml-6 list-decimal [&>li]:mt-2 text-muted-foreground ${className}`}
-      {...props}
-    />
-  ),
-  li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className={`mt-2 text-muted-foreground ${className}`} {...props} />
-  ),
-  blockquote: ({
-    className,
-    ...props
-  }: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote
-      className={`mt-6 border-l-4 border-primary pl-6 italic py-2 pr-4 rounded-r-lg ${className}`}
-      {...props}
-    />
-  ),
+export const BlogComponents = {
+  // Override default image component
   img: ({
-    className,
+    src,
     alt,
     ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img className={`rounded-md border ${className}`} alt={alt} {...props} />
-  ),
-  hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
-  table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto">
-      <table className={`w-full ${className}`} {...props} />
-    </div>
-  ),
-  tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className={`m-0 border-t p-0 even:bg-muted ${className}`} {...props} />
-  ),
-  th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <th
-      className={`border px-4 py-2 text-left font-bold [[align=center]]:text-center [[align=right]]:text-right ${className}`}
+  }: {
+    src: string;
+    alt: string;
+    [key: string]: unknown;
+  }) => (
+    <Image
+      src={src}
+      alt={alt}
+      width={800}
+      height={400}
+      className="rounded-lg"
       {...props}
     />
   ),
-  td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <td
-      className={`border px-4 py-2 text-left [[align=center]]:text-center [[align=right]]:text-right ${className}`}
-      {...props}
-    />
+  // Custom heading with better styling
+  h1: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <h1 className="mb-6 text-4xl font-bold" {...props}>
+      {children}
+    </h1>
   ),
-  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      className={`mb-4 mt-6 overflow-x-auto rounded-lg border bg-[#262626] px-4 py-4 ${className}`}
-      {...props}
-    />
+  h2: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <h2 className="mt-8 mb-4 text-3xl font-semibold" {...props}>
+      {children}
+    </h2>
   ),
-  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <strong className={`font-bold text-primary ${className}`} {...props} />
+  h3: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <h3 className="mt-6 mb-3 text-2xl font-medium" {...props}>
+      {children}
+    </h3>
+  ),
+  // Custom paragraph styling
+  p: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <p className="text-muted-foreground mb-4 leading-7" {...props}>
+      {children}
+    </p>
+  ),
+  // Custom list styling
+  ul: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <ul className="mb-4 ml-6 list-disc space-y-2" {...props}>
+      {children}
+    </ul>
+  ),
+  ol: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <ol className="mb-4 ml-6 list-decimal space-y-2" {...props}>
+      {children}
+    </ol>
+  ),
+  li: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <li className="text-muted-foreground leading-7" {...props}>
+      {children}
+    </li>
+  ),
+  pre: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => {
+    const getTextContent = (node: React.ReactNode): string => {
+      if (typeof node === "string") {
+        return node;
+      }
+      if (typeof node === "number") {
+        return String(node);
+      }
+      if (
+        React.isValidElement(node) &&
+        node.props &&
+        typeof node.props === "object"
+      ) {
+        return getTextContent(
+          (node.props as { children?: React.ReactNode }).children
+        );
+      }
+      if (Array.isArray(node)) {
+        return node.map(getTextContent).join("");
+      }
+      return "";
+    };
+
+    const codeText = getTextContent(children);
+
+    return (
+      <div className="group relative mb-4">
+        <pre
+          className="bg-muted/30 overflow-x-auto rounded-lg border p-4 text-sm [&>code]:bg-transparent [&>code]:p-0"
+          {...props}
+        >
+          {children}
+        </pre>
+        <CodeCopyButton code={codeText} />
+      </div>
+    );
+  },
+  // Inline code styling (not affected by syntax highlighting)
+  code: ({
+    children,
+    className,
+    ...props
+  }: {
+    children: React.ReactNode;
+    className?: string;
+    [key: string]: unknown;
+  }) => {
+    // If it's part of a pre block (syntax highlighted), don't apply inline styling
+    if (className?.includes("language-")) {
+      return (
+        <code className={className} {...props}>
+          {children}
+        </code>
+      );
+    }
+
+    // Inline code styling
+    return (
+      <code className="rounded px-2 py-1 font-mono text-sm" {...props}>
+        {children}
+      </code>
+    );
+  },
+  // Custom blockquote styling
+  blockquote: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <blockquote
+      className="border-primary text-muted-foreground mb-4 border-l-4 pl-4 italic"
+      {...props}
+    >
+      {children}
+    </blockquote>
   ),
 };
-
-interface MdxProps {
-  code: string;
-}
-
-export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code);
-
-  return (
-    <div className="mdx">
-      <Component components={components} />
-    </div>
-  );
-}

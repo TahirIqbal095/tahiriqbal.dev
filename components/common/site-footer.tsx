@@ -12,7 +12,7 @@ export default function SiteFooter() {
       transition={{ duration: 0.2 }}
       className="text-muted-foreground absolute right-0 bottom-0 left-0 flex items-center justify-between border-t px-2 py-2"
     >
-      <div className="flex flex-col gap-1 text-[8px] md:text-xs">
+      <div className="flex flex-col gap-1 text-[10px] md:text-xs">
         <p className="">
           {footerData.title}{" "}
           <a href="https://github.com/tahiriqbal095" target="_blank">

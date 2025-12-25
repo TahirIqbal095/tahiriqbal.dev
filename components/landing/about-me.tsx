@@ -20,7 +20,7 @@ export default function AboutMe() {
       <CardHeader>
         <div className="mb-1 flex items-center justify-between text-xs">
           <CardTitle>{aboutConfig.title}</CardTitle>
-          <CardLabel>{aboutConfig.label}</CardLabel>
+          <CardLabel>{aboutConfig.name}</CardLabel>
         </div>
         <Separator />
       </CardHeader>

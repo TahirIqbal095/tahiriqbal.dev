@@ -7,7 +7,6 @@ import { Projects } from "@/components/landing/projects";
 import { leetcodeStats } from "@/lib/leetcode-stats";
 import { BentoCard, BentoGrid } from "@/components/landing/bento-grid";
 import { LeetCode } from "leetcode-query";
-
 export default async function LandingPage() {
   const stats = await leetcodeStats();
   const leetcode = new LeetCode();

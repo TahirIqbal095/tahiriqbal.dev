@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
-import { withContentlayer } from "next-contentlayer";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  pageExtensions: ["mdx", "md", "js", "jsx", "ts", "tsx"],
-  reactStrictMode: true,
+  pageExtensions: ["js", "jsx", "ts", "tsx"],
   images: {
     remotePatterns: [
       {
@@ -12,10 +10,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-
-  experimental: {
-    mdxRs: true,
-  },
 };
 
-export default withContentlayer(nextConfig);
+export default nextConfig;

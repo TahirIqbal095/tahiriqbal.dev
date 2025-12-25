@@ -1,13 +1,12 @@
+import { BlogFrontmatter } from "@/types/blogs";
 import { Link } from "next-view-transitions";
 
 interface Props {
+  frontmatter: BlogFrontmatter;
   slug: string;
-  title: string;
-  description: string;
-  date: string;
 }
 
-export default function BlogCard({ slug, title, description, date }: Props) {
+export default function BlogCard({ frontmatter, slug }: Props) {
   return (
     <Link
       href={`/blogs/${slug}`}
@@ -23,15 +22,15 @@ export default function BlogCard({ slug, title, description, date }: Props) {
           <div className="flex flex-col gap-0.5">
             <div className="flex items-baseline justify-between gap-2">
               <h2 className="group-hover:text-primary text-base font-medium tracking-tight transition-colors">
-                {title}
+                {frontmatter.title}
               </h2>
               <span className="text-muted-foreground/60 shrink-0 font-mono text-xs whitespace-nowrap">
-                {date}
+                {new Date(frontmatter.date).toISOString().split("T")[0]}
               </span>
             </div>
 
             <p className="text-muted-foreground group-hover:text-foreground/80 line-clamp-2 text-sm leading-relaxed transition-colors duration-300">
-              {description}
+              {frontmatter.description}
             </p>
           </div>
         </div>

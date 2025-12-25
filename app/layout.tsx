@@ -5,11 +5,9 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import SiteHeader from "@/components/common/site-header";
 import SiteFooter from "@/components/common/site-footer";
 import { Inter } from "next/font/google";
+import { generateMetadata } from "@/config/meta";
 
-export const metadata: Metadata = {
-  title: "Tahir Iqbal",
-  description: "Personal Portfolio website of Tahir Iqbal",
-};
+export const metadata: Metadata = generateMetadata("/");
 
 const inter = Inter({
   subsets: ["latin"],
