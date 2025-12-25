@@ -1,7 +1,7 @@
 import { BlogComponents } from "@/components/mdx/mdx-components";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeftIcon } from "lucide-react";
+import { ArrowLeftIcon, Calendar } from "lucide-react";
 import { Link } from "next-view-transitions";
 import { notFound } from "next/navigation";
 import { getAllBlogsSlug, getBlogBySlug } from "@/lib/blogs";
@@ -76,8 +76,8 @@ export default async function BlogPage({ params }: Props) {
   }
 
   return (
-    <article className="container mx-auto max-w-3xl px-4 py-6">
-      <div className="mb-6">
+    <article className="container mx-auto max-w-3xl space-y-8 px-2">
+      <div className="space-y-3">
         <Button className="group" asChild variant={"link"}>
           <Link href={"/blogs"}>
             <ArrowLeftIcon
@@ -87,24 +87,37 @@ export default async function BlogPage({ params }: Props) {
             <span>Back</span>
           </Link>
         </Button>
-        <h1 className="mt-2 text-4xl leading-tight font-extrabold tracking-tighter sm:text-5xl">
-          {blog.frontmatter.title}
-        </h1>
-        <p className="text-muted-foreground mt-4 text-xl">
-          {blog.frontmatter.description}
-        </p>
-        <div className="mt-4 justify-between space-y-2 md:flex">
-          <p className="text-muted-foreground text-sm">
-            {new Date(blog.frontmatter.date).toISOString().split("T")[0]}
+        <div className="space-y-2">
+          <h1 className="text-4xl leading-tight font-extrabold tracking-tighter sm:text-5xl">
+            {blog.frontmatter.title}
+          </h1>
+          <p className="text-muted-foreground text-base md:text-lg">
+            {blog.frontmatter.description}
           </p>
-          <div className="flex flex-wrap gap-2">
-            {blog.frontmatter.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </div>
         </div>
-        <Separator className="mt-8" />
       </div>
+
+      <div className="flex flex-col justify-between gap-4 md:flex-row">
+        <div className="flex flex-wrap gap-2">
+          {blog.frontmatter.tags.map((tag) => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+        </div>
+        <p className="text-muted-foreground text-sm">
+          <span className="flex items-center gap-1">
+            <Calendar size={12} />
+            <span>
+              {new Date(blog.frontmatter.date).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <Separator />
       <MDXRemote
         components={BlogComponents}
         source={blog.content}
