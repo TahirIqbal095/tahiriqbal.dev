@@ -10,6 +10,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import { Metadata } from "next";
+import Tag from "@/components/ui/tag";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -98,12 +99,7 @@ export default async function BlogPage({ params }: Props) {
           </p>
           <div className="flex flex-wrap gap-2">
             {blog.frontmatter.tags.map((tag) => (
-              <span
-                key={tag}
-                className="focus:ring-ring inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
-              >
-                {tag}
-              </span>
+              <Tag key={tag}>{tag}</Tag>
             ))}
           </div>
         </div>

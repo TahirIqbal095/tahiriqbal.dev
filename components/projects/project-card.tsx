@@ -14,13 +14,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      viewport={{ once: true }}
-      className="group bg-card flex h-full flex-col rounded-md border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-    >
+    <motion.div className="group bg-card flex h-full flex-col rounded-md border">
       {/* Image Container */}
       <div className="bg-muted/20 relative aspect-video w-full overflow-hidden rounded-t-md border-b">
         <Image

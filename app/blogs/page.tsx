@@ -1,33 +1,53 @@
-import { Link } from "next-view-transitions";
-import BlogCard from "@/components/blogs/blog-card";
-import { Button } from "@/components/ui/button";
-import { ArrowLeftIcon } from "lucide-react";
 import { getAllPublishedBlogs } from "@/lib/blogs";
 import { generateMetadata } from "@/config/meta";
 import { Metadata } from "next";
+import BlogPreview from "@/components/blogs/blog-preview";
+import { Separator } from "@/components/ui/separator";
+import Tag from "@/components/ui/tag";
 
 export const metadata: Metadata = generateMetadata("/blogs");
 
 export default function Home() {
   const blogs = getAllPublishedBlogs();
+  const totalBlogs = blogs.length;
+  const tags = Array.from(
+    new Set(blogs.flatMap((blog) => blog.frontmatter.tags))
+  );
 
   return (
-    <div className="bg-card rounded-md border p-4">
-      <Button className="group" asChild variant={"link"}>
-        <Link href={"/"}>
-          <ArrowLeftIcon
-            className="transition-all group-hover:-translate-x-1"
-            size={20}
-          />
-          <span>Back</span>
-        </Link>
-      </Button>
-      <h1 className="mb-4 text-3xl font-bold">Blogs</h1>
-      <article className="border-border/50 relative my-4 ml-2 space-y-8 border-l border-dashed pl-6">
-        {blogs.map((blog, idx) => (
-          <BlogCard key={idx} frontmatter={blog.frontmatter} slug={blog.slug} />
-        ))}
-      </article>
-    </div>
+    <section className="mx-auto mt-8 max-w-3xl space-y-6 px-2">
+      <div className="w-full space-y-2 text-center">
+        <h1 className="text-4xl font-bold">Blogs</h1>
+        <p className="text-muted-foreground mx-auto max-w-lg text-sm">
+          Thoughts, tutorials, and insights on engineering, and programming.
+        </p>
+      </div>
+      <div className="space-y-12">
+        <Separator />
+        <div className="space-y-3">
+          <h2 className="text-xl font-medium">Tags</h2>
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag, idx) => (
+              <Tag key={idx}>{tag}</Tag>
+            ))}
+          </div>
+        </div>
+        <div className="space-y-4">
+          <h2 className="text-xl font-medium">
+            Latest Blogs{" "}
+            <sup className="text-muted-foreground text-sm">({totalBlogs})</sup>
+          </h2>
+          <article className="relative mt-4 grid gap-4 space-y-8 md:grid-cols-2">
+            {blogs.map((blog, idx) => (
+              <BlogPreview
+                key={idx}
+                frontmatter={blog.frontmatter}
+                slug={blog.slug}
+              />
+            ))}
+          </article>
+        </div>
+      </div>
+    </section>
   );
 }

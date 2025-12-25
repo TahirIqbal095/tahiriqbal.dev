@@ -34,7 +34,6 @@ export default function RootLayout({
               <main className="w-full overflow-x-hidden px-2 py-20">
                 {children}
               </main>
-              <SiteFooter />
             </div>
           </ThemeProvider>
         </body>

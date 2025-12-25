@@ -5,14 +5,22 @@ import { ThemeToggleButton } from "@/components/toggle-theme";
 import { motion } from "motion/react";
 import { Link } from "next-view-transitions";
 import { Button } from "../ui/button";
+import { usePathname } from "next/navigation";
 
 export default function SiteHeader() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2 }}
-      className="fixed max-w-7xl mx-auto backdrop-blur z-50 px-2 top-0 left-0 right-0 flex items-center justify-between border-b py-2"
+      animate={{
+        opacity: 1,
+        y: 0,
+        maxWidth: isHome ? "80rem" : "48rem",
+      }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="fixed top-0 right-0 left-0 z-50 mx-auto flex w-full items-center justify-between border-b px-2 py-2 backdrop-blur"
     >
       <Logo />
 
