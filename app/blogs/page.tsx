@@ -16,7 +16,7 @@ export default function Home() {
   );
 
   return (
-    <section className="mx-auto mt-8 max-w-3xl space-y-6 px-2">
+    <section className="mx-auto mt-4 max-w-3xl space-y-6 px-2">
       <div className="w-full space-y-2 text-center">
         <PacificoDashedHeading>Blogs</PacificoDashedHeading>
         <p className="text-muted-foreground mx-auto max-w-lg text-sm">
