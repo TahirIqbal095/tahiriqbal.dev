@@ -66,7 +66,7 @@ export default function BlogsView({ blogs, tags }: BlogsViewProps) {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="mx-auto mt-4 max-w-3xl space-y-16 px-2"
+      className="mx-auto mt-4 max-w-3xl space-y-8 px-2 md:space-y-12"
     >
       <motion.div
         variants={itemVariants}
@@ -78,7 +78,7 @@ export default function BlogsView({ blogs, tags }: BlogsViewProps) {
         </p>
       </motion.div>
 
-      <div className="space-y-12">
+      <div className="space-y-8 md:space-y-12">
         <motion.div variants={itemVariants}>
           <Separator />
         </motion.div>

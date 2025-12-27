@@ -11,6 +11,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import { Metadata } from "next";
 import Tag from "@/components/ui/tag";
+import Image from "next/image";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: blog.frontmatter.description,
     keywords: blog.frontmatter.tags,
     openGraph: {
+      type: "article",
       title: blog.frontmatter.title,
       description: blog.frontmatter.description,
       images: [
@@ -88,6 +90,13 @@ export default async function BlogPage({ params }: Props) {
           </Link>
         </Button>
         <div className="space-y-2">
+          <Image
+            src={blog.frontmatter.image}
+            alt={blog.frontmatter.title}
+            width={1200}
+            height={630}
+            className="rounded-md"
+          />
           <h1 className="text-4xl leading-tight font-extrabold tracking-tighter sm:text-5xl">
             {blog.frontmatter.title}
           </h1>
