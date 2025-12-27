@@ -7,7 +7,9 @@ import { Projects } from "@/components/landing/projects";
 import { leetcodeStats } from "@/lib/leetcode-stats";
 import { BentoCard, BentoGrid } from "@/components/landing/bento-grid";
 import { LeetCode } from "leetcode-query";
-import SiteFooter from "@/components/common/site-footer";
+import Footer from "@/components/common/footer";
+import Header from "@/components/common/header";
+
 export default async function LandingPage() {
   const stats = await leetcodeStats();
   const leetcode = new LeetCode();
@@ -15,6 +17,7 @@ export default async function LandingPage() {
 
   return (
     <div>
+      <Header />
       <BentoGrid className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
         <BentoCard className="col-span-1">
           <TimeCard />
@@ -38,7 +41,7 @@ export default async function LandingPage() {
           />
         </BentoCard>
       </BentoGrid>
-      <SiteFooter />
+      <Footer />
     </div>
   );
 }

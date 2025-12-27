@@ -26,7 +26,8 @@ export default function AboutMe() {
       </CardHeader>
       <CardContent>
         <p className="text-primary font-medium">
-          {staticText} <EncryptedText text={encryptedText} />
+          {staticText}
+          <EncryptedText text={encryptedText} />
         </p>
       </CardContent>
     </Card>

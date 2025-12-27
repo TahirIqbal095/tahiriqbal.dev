@@ -4,7 +4,7 @@ import { IconWrapper } from "./icon-wrapper";
 import { footerData } from "@/config/footer";
 import { motion } from "motion/react";
 
-export default function SiteFooter() {
+export default function Footer() {
   return (
     <motion.footer
       initial={{ opacity: 0, y: 10 }}

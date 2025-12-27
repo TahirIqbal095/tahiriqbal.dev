@@ -7,7 +7,7 @@ import { Link } from "next-view-transitions";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
 
-export default function SiteHeader() {
+export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 

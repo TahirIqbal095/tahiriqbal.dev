@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import { ThemeProvider } from "@/providers/theme-provider";
-import SiteHeader from "@/components/common/site-header";
-import SiteFooter from "@/components/common/site-footer";
+import Header from "@/components/common/header";
 import { Inter } from "next/font/google";
 import { generateMetadata } from "@/config/meta";
 
@@ -30,7 +29,7 @@ export default function RootLayout({
         <body>
           <ThemeProvider>
             <div className="relative mx-auto min-h-screen max-w-7xl space-y-4">
-              <SiteHeader />
+              <Header />
               <main className="w-full overflow-x-hidden px-2 py-20">
                 {children}
               </main>

@@ -20,28 +20,22 @@ export default function PacificoDashedHeading({ children, className }: Props) {
         className
       )}
     >
-      {/* Content */}
-      <h2 className="text-foreground relative z-10 text-3xl font-medium md:text-4xl">
+      <h2 className="text-foreground relative z-10 text-4xl font-medium md:text-5xl">
         {children}
       </h2>
 
-      {/* Corner Plus Icons */}
-      {/* Top Left */}
       <Plus
         size={14}
         className="text-primary absolute -top-[7.5px] -left-[7.5px] z-20"
       />
-      {/* Top Right */}
       <Plus
         size={14}
         className="text-primary absolute -top-[7.5px] -right-[7.5px] z-20"
       />
-      {/* Bottom Left */}
       <Plus
         size={14}
         className="text-primary absolute -bottom-[7.5px] -left-[7.5px] z-20"
       />
-      {/* Bottom Right */}
       <Plus
         size={14}
         className="text-primary absolute -right-[7.5px] -bottom-[7.5px] z-20"
