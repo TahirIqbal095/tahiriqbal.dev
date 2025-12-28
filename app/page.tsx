@@ -17,7 +17,6 @@ export default async function LandingPage() {
 
   return (
     <div>
-      <Header />
       <BentoGrid className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
         <BentoCard className="col-span-1">
           <TimeCard />

@@ -4,7 +4,7 @@ import { motion, Variants } from "motion/react";
 import BlogCard from "@/components/blogs/blog-card";
 import { Separator } from "@/components/ui/separator";
 import Tag from "@/components/ui/tag";
-import PacificoDashedHeading from "@/components/ui/pacifico-dashed-heading";
+import BlogHeader from "@/components/blogs/blog-header";
 import QuoteCard from "@/components/common/quote-card";
 import { Button } from "@/components/ui/button";
 import FooterSm from "@/components/common/footer-sm";
@@ -66,19 +66,14 @@ export default function BlogsView({ blogs, tags }: BlogsViewProps) {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="mx-auto mt-4 max-w-3xl space-y-8 px-2 md:space-y-12"
+      className="mx-auto mt-4 max-w-3xl space-y-8 px-2 md:space-y-10"
     >
-      <motion.div
-        variants={itemVariants}
-        className="w-full space-y-2 text-center"
-      >
-        <PacificoDashedHeading>{blogConfig.title}</PacificoDashedHeading>
-        <p className="text-muted-foreground mx-auto max-w-lg text-base">
-          {blogConfig.description}
-        </p>
-      </motion.div>
+      <BlogHeader
+        title={blogConfig.title}
+        description={blogConfig.description}
+      />
 
-      <div className="space-y-8 md:space-y-12">
+      <div className="space-y-8 md:space-y-10">
         <motion.div variants={itemVariants}>
           <Separator />
         </motion.div>
