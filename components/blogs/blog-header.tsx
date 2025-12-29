@@ -23,7 +23,7 @@ export default function BlogHeader({
         className="relative mb-4"
       >
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-          <span className="from-foreground to-foreground/60 bg-linear-to-r bg-clip-text text-transparent">
+          <span className="from-foreground via-foreground/70 to-foreground/60 bg-linear-to-r bg-clip-text text-transparent">
             {title}
           </span>
         </h1>

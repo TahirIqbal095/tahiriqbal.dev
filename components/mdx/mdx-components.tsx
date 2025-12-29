@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import { CodeCopyButton } from "@/components/CodeCopyButton";
+import { CodeCopyButton } from "@/components/code-copy-button";
 
 export const BlogComponents = {
   img: ({
