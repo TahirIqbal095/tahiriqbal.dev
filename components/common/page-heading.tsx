@@ -9,7 +9,7 @@ interface BlogHeaderProps {
   className?: string;
 }
 
-export default function BlogHeader({
+export default function PageHeading({
   title,
   description,
   className,
@@ -27,12 +27,6 @@ export default function BlogHeader({
             {title}
           </span>
         </h1>
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-          className="bg-primary/20 mx-auto mt-2 h-1 w-16 rounded-full md:w-24"
-        />
       </motion.div>
 
       <motion.p

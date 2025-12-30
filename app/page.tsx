@@ -4,14 +4,12 @@ import { CurrentStatus } from "@/components/landing/current-status";
 import { ExperienceAndEdu } from "@/components/landing/experience-education";
 import { LeetcodeStatsCard } from "@/components/landing/leetcode";
 import { Projects } from "@/components/landing/projects";
-import { leetcodeStats } from "@/lib/leetcode-stats";
 import { BentoCard, BentoGrid } from "@/components/landing/bento-grid";
 import { LeetCode } from "leetcode-query";
 import Footer from "@/components/common/footer";
-import Header from "@/components/common/header";
+import { leetcodeConfig } from "@/config/leetcode";
 
 export default async function LandingPage() {
-  const stats = await leetcodeStats();
   const leetcode = new LeetCode();
   const user = await leetcode.user("tahiriqbal095");
 
@@ -36,7 +34,7 @@ export default async function LandingPage() {
         <BentoCard className="col-span-2 lg:col-span-2 lg:row-span-2">
           <LeetcodeStatsCard
             submissions={user.recentSubmissionList}
-            stats={stats}
+            stats={leetcodeConfig}
           />
         </BentoCard>
       </BentoGrid>

@@ -1,10 +1,16 @@
 "use client";
 
 import { footerData } from "@/config/footer";
+import { motion } from "motion/react";
 
 export default function FooterSm() {
   return (
-    <footer className="text-muted-foreground text-center">
+    <motion.footer
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="text-muted-foreground text-center"
+    >
       <div className="flex flex-col gap-1 text-[10px] md:text-xs">
         <p className="">
           {footerData.title}{" "}
@@ -16,6 +22,6 @@ export default function FooterSm() {
         </p>
         <p className="">© {new Date().getFullYear()} All rights reserved.</p>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

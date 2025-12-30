@@ -7,8 +7,6 @@ export interface LeetCodeSubmission {
 }
 
 export interface LeetcodeStats {
-  status: string;
-  message: string;
   totalSolved: number;
   totalQuestions: number;
   easySolved: number;
@@ -17,8 +15,4 @@ export interface LeetcodeStats {
   totalMedium: number;
   hardSolved: number;
   totalHard: number;
-  acceptanceRate: number;
-  ranking: number;
-  contributionPoints: number;
-  reputation: number;
 }

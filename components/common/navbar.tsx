@@ -7,7 +7,12 @@ import { Link } from "next-view-transitions";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+const pages = [
+  { name: "Blogs", href: "/blogs" },
+  { name: "Guestbook", href: "/guestbook" },
+];
+
+export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -24,12 +29,14 @@ export default function Header() {
     >
       <Logo />
 
-      <div className="flex items-center gap-6">
-        <Button asChild variant="link">
-          <Link href="/blogs" className="ml-2">
-            Blogs
-          </Link>
-        </Button>
+      <div className="flex items-center gap-4">
+        {pages.map((page, idx) => (
+          <Button key={idx} asChild variant="link">
+            <Link href={page.href} className="ml-2">
+              {page.name}
+            </Link>
+          </Button>
+        ))}
         <ThemeToggleButton start="top-right" />
       </div>
     </motion.nav>

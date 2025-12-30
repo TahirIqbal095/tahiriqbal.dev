@@ -154,6 +154,16 @@ export function LeetcodeStatsCard({ stats, submissions }: Props) {
   );
 }
 
+interface DonutSegmentProps {
+  startAngle: number;
+  angle: number;
+  solvedAngle: number;
+  radius: number;
+  stroke: number;
+  color: string;
+  delay: number;
+}
+
 function DonutSegment({
   startAngle,
   angle,
@@ -162,7 +172,7 @@ function DonutSegment({
   stroke,
   color,
   delay,
-}: any) {
+}: DonutSegmentProps) {
   if (angle <= 0) return null;
 
   const circumference = 2 * Math.PI * radius;

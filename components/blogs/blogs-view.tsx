@@ -4,10 +4,9 @@ import { motion, Variants } from "motion/react";
 import BlogCard from "@/components/blogs/blog-card";
 import { Separator } from "@/components/ui/separator";
 import Tag from "@/components/ui/tag";
-import BlogHeader from "@/components/blogs/blog-header";
+import PageHeading from "@/components/common/page-heading";
 import QuoteCard from "@/components/common/quote-card";
 import { Button } from "@/components/ui/button";
-import FooterSm from "@/components/common/footer-sm";
 import { BlogPostPreview } from "@/types/blogs";
 import { useState } from "react";
 
@@ -66,9 +65,9 @@ export default function BlogsView({ blogs, tags }: BlogsViewProps) {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="mx-auto mt-4 max-w-3xl space-y-8 px-2 md:space-y-10"
+      className="space-y-8 md:space-y-10"
     >
-      <BlogHeader
+      <PageHeading
         title={blogConfig.title}
         description={blogConfig.description}
       />
@@ -138,10 +137,6 @@ export default function BlogsView({ blogs, tags }: BlogsViewProps) {
 
       <motion.div variants={itemVariants}>
         <QuoteCard />
-      </motion.div>
-
-      <motion.div variants={itemVariants}>
-        <FooterSm />
       </motion.div>
     </motion.section>
   );
