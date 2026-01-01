@@ -6,8 +6,9 @@ import GuestbookList from "./guestbook-list";
 import GuestbookHeader from "./guestbook-header";
 import { Separator } from "../ui/separator";
 import { UserWithMessages } from "@/db/types";
-import { motion, Variants } from "motion/react";
+import { Variants } from "motion/react";
 import { useSession } from "@/lib/auth-client";
+import { ContainerVariants, ItemVariants } from "../common/page-animation";
 
 export default function GuestbookView({
   messages,
@@ -15,51 +16,25 @@ export default function GuestbookView({
   messages: UserWithMessages[];
 }) {
   const { data } = useSession();
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="space-y-8"
-    >
-      <motion.div variants={itemVariants}>
+    <ContainerVariants className="space-y-8">
+      <ItemVariants>
         <GuestbookHeader />
-      </motion.div>
+      </ItemVariants>
 
-      <motion.div variants={itemVariants}>
+      <ItemVariants>
         <Separator />
-      </motion.div>
+      </ItemVariants>
 
-      <motion.div variants={itemVariants}>
+      <ItemVariants>
         <Activity mode={data?.session ? "visible" : "hidden"}>
           <InputForm />
         </Activity>
-      </motion.div>
+      </ItemVariants>
 
-      <motion.div variants={itemVariants}>
+      <ItemVariants>
         {messages.length && <GuestbookList messages={messages} />}
-      </motion.div>
-    </motion.section>
+      </ItemVariants>
+    </ContainerVariants>
   );
 }

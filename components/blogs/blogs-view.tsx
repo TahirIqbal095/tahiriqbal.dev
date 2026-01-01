@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, Variants } from "motion/react";
 import BlogCard from "@/components/blogs/blog-card";
 import { Separator } from "@/components/ui/separator";
 import Tag from "@/components/ui/tag";
@@ -9,16 +8,13 @@ import QuoteCard from "@/components/common/quote-card";
 import { Button } from "@/components/ui/button";
 import { BlogPostPreview } from "@/types/blogs";
 import { useState } from "react";
+import { ContainerVariants, ItemVariants } from "../common/page-animation";
+import { blogConfig } from "@/config/blogs";
 
 interface BlogsViewProps {
   blogs: BlogPostPreview[];
   tags: string[];
 }
-
-const blogConfig = {
-  title: "Blogs",
-  description: "Insights, Stories, and Ideas on Engineering, and Programming.",
-};
 
 export default function BlogsView({ blogs, tags }: BlogsViewProps) {
   const [showAllBlogs, setShowAllBlogs] = useState(false);
@@ -38,106 +34,71 @@ export default function BlogsView({ blogs, tags }: BlogsViewProps) {
     setShowAllTags((prev) => !prev);
   };
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="space-y-8 md:space-y-10"
-    >
-      <PageHeading
-        title={blogConfig.title}
-        description={blogConfig.description}
-      />
+    <ContainerVariants className="space-y-8 md:space-y-10">
+      <ItemVariants>
+        <PageHeading
+          title={blogConfig.title}
+          description={blogConfig.description}
+        />
+      </ItemVariants>
 
-      <div className="space-y-8 md:space-y-10">
-        <motion.div variants={itemVariants}>
-          <Separator />
-        </motion.div>
+      <ItemVariants>
+        <Separator />
+      </ItemVariants>
 
-        <motion.div variants={itemVariants} className="space-y-3">
-          <h2 className="text-xl font-medium">Tags</h2>
-          <div className="flex flex-wrap items-center gap-2">
-            {visibleTags.map((tag, idx) => (
-              <Tag key={idx}>{tag}</Tag>
-            ))}
-            {!showAllTags ? (
-              <span
-                onClick={showAllTagsHandler}
-                className="text-muted-foreground cursor-pointer text-xs underline"
-              >
-                {moreTags > 0 && `+ ${moreTags} more`}
-              </span>
-            ) : (
-              <span
-                onClick={showAllTagsHandler}
-                className="text-muted-foreground cursor-pointer text-xs underline"
-              >
-                Show Less
-              </span>
-            )}
-          </div>
-        </motion.div>
+      <ItemVariants>
+        <h2 className="text-xl font-medium">Tags</h2>
+        <div className="flex flex-wrap items-center gap-2">
+          {visibleTags.map((tag, idx) => (
+            <Tag key={idx}>{tag}</Tag>
+          ))}
+          {!showAllTags ? (
+            <span
+              onClick={showAllTagsHandler}
+              className="text-muted-foreground cursor-pointer text-xs underline"
+            >
+              {moreTags > 0 && `+ ${moreTags} more`}
+            </span>
+          ) : (
+            <span
+              onClick={showAllTagsHandler}
+              className="text-muted-foreground cursor-pointer text-xs underline"
+            >
+              Show Less
+            </span>
+          )}
+        </div>
+      </ItemVariants>
 
-        <div className="space-y-4">
-          <motion.h2 variants={itemVariants} className="text-xl font-medium">
-            Latest Blogs{" "}
-            <sup className="text-muted-foreground text-sm">({totalBlogs})</sup>
-          </motion.h2>
+      <ItemVariants>
+        <p className="text-xl font-medium">
+          Latest Blogs{" "}
+          <sup className="text-muted-foreground text-sm">({totalBlogs})</sup>
+        </p>
 
+        <div className="flex flex-col items-center gap-10">
           <article className="relative mt-4 grid gap-4 md:grid-cols-2">
-            {visibleBlogs.map((blog, _) => (
-              <motion.div
-                key={blog.slug}
-                initial="hidden"
-                animate="visible"
-                variants={itemVariants}
-              >
+            {visibleBlogs.map((blog, idx) => (
+              <div key={`${blog.slug}-${idx}`}>
                 <BlogCard frontmatter={blog.frontmatter} slug={blog.slug} />
-              </motion.div>
+              </div>
             ))}
           </article>
 
-          <motion.div
-            variants={itemVariants}
-            className="mt-8 flex justify-center"
+          <Button
+            onClick={toggleBlogsView}
+            variant={"outline"}
+            className="w-fit cursor-pointer"
           >
-            <Button
-              onClick={toggleBlogsView}
-              variant={"outline"}
-              className="w-fit cursor-pointer"
-            >
-              {showAllBlogs ? "View Less" : "View All"}
-            </Button>
-          </motion.div>
+            {showAllBlogs ? "View Less" : "View All"}
+          </Button>
         </div>
-      </div>
+      </ItemVariants>
 
-      <motion.div variants={itemVariants}>
+      <ItemVariants>
         <QuoteCard />
-      </motion.div>
-    </motion.section>
+      </ItemVariants>
+    </ContainerVariants>
   );
 }
