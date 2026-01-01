@@ -1,11 +1,11 @@
 import { userMessages } from "./schema";
 
 export type UserWithMessages = {
-  name: string;
-  image: string | null;
+  message: string;
   createdAt: Date;
-  userMessages: {
-    message: string;
+  user: {
+    name: string;
+    image: string | null;
   };
 };
 

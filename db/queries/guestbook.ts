@@ -39,33 +39,23 @@ export const addUserMessage = async (
 
 export const userWithMessages = async (): Promise<UserWithMessages[]> => {
   try {
-    const result = await db.query.user.findMany({
+    const result = await db.query.userMessages.findMany({
       columns: {
-        name: true,
-        image: true,
+        message: true,
         createdAt: true,
       },
       with: {
-        userMessages: {
+        user: {
           columns: {
-            message: true,
+            name: true,
+            image: true,
           },
         },
       },
+      orderBy: (userMessages, { desc }) => [desc(userMessages.createdAt)],
     });
 
-    console.log(result);
-
-    return result.flatMap((user) =>
-      user.userMessages.map((msg) => ({
-        name: user.name,
-        image: user.image,
-        createdAt: user.createdAt,
-        userMessages: {
-          message: msg.message,
-        },
-      }))
-    );
+    return result;
   } catch (error) {
     console.log("Error fetch user with messages", error);
     throw error;

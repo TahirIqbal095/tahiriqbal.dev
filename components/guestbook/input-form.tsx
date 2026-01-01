@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Send, Sparkles } from "lucide-react";
-import { AnimatePresence } from "motion/react";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import Spinner from "../ui/spinner";
 import { addGuestbookEntry } from "@/actions/actions";
 import { useSession } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 export default function InputForm() {
   const { data } = useSession();
@@ -17,6 +17,15 @@ export default function InputForm() {
     null
   );
   const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    if (state?.error) {
+      toast.error(state.error);
+    }
+    if (state?.message) {
+      toast.success(state.message);
+    }
+  }, [state]);
 
   return (
     <div className="relative w-full">
@@ -58,15 +67,6 @@ export default function InputForm() {
           </div>
         </form>
       </div>
-
-      <AnimatePresence>
-        {state?.error && (
-          <span className="text-xs text-red-400">{state.error}</span>
-        )}
-        {state?.message && (
-          <span className="text-sm text-green-400">{state.message}</span>
-        )}
-      </AnimatePresence>
 
       <div className="text-muted-foreground mt-3 flex items-center justify-between px-2 text-xs">
         <span className="flex items-center gap-1.5">

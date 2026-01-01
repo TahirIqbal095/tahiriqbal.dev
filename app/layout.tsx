@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import Navbar from "@/components/common/navbar";
 import { Inter } from "next/font/google";
 import { generateMetadata } from "@/config/meta";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = generateMetadata("/");
 
@@ -34,6 +35,7 @@ export default function RootLayout({
                 {children}
               </main>
             </div>
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

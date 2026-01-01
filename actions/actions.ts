@@ -1,6 +1,7 @@
 "use server";
 
 import { addUserMessage } from "@/db/queries/guestbook";
+import { revalidatePath } from "next/cache";
 
 export async function addGuestbookEntry(
   currentState: unknown,
@@ -15,5 +16,6 @@ export async function addGuestbookEntry(
     return { error: "user id not found, this is unusual" };
   }
   await addUserMessage(userId, data);
+  revalidatePath("/guestbook");
   return { message: "message added" };
 }
