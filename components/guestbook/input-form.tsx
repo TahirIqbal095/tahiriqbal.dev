@@ -23,42 +23,38 @@ export default function InputForm() {
       <div className="bg-card relative rounded-xl border p-1 shadow-sm">
         <div
           className={cn(
-            "absolute -inset-0.5 rounded-xl bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500 opacity-20 blur-xl transition duration-500",
-            isFocused ? "opacity-50" : "opacity-20"
+            "absolute inset-0 rounded-xl bg-linear-to-r from-[#2A7B9B] via-[#57C785] to-[#EDDD53] opacity-20 blur-xl transition duration-500",
+            isFocused ? "opacity-40" : "opacity-20"
           )}
-        ></div>
+        />
         <form action={formAction} className="relative flex flex-col">
-          <div className="relative flex items-center">
-            <Input
-              name="message"
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              placeholder="Sign the guestbook..."
-              className="border-0 bg-transparent py-6 pr-14 text-base shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
-            />
-            <Input
-              name="userId"
-              value={data?.user.id}
-              className="invisible h-0 w-0"
-            />
-            <div className="absolute top-1 right-1 bottom-1 flex items-center">
-              <Button
-                type="submit"
-                size="icon"
-                className={cn(
-                  "h-10 w-10 rounded-lg transition-all duration-300",
-                  state?.message
-                    ? "bg-linear-to-r from-pink-500 to-purple-600 text-white shadow-md hover:scale-105 hover:shadow-lg"
-                    : "bg-muted text-muted-foreground"
-                )}
-              >
-                {isPending ? (
-                  <Spinner className="h-5 w-5 animate-spin" />
-                ) : (
-                  <Send className="ml-0.5 h-5 w-5" />
-                )}
-              </Button>
-            </div>
+          <Input
+            name="userId"
+            value={data?.user.id}
+            className="hidden h-0 w-0"
+          />
+
+          <Input
+            name="message"
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            placeholder="Sign the guestbook..."
+            className="placeholder:text-muted-foreground border-0 bg-transparent py-6 pr-14 text-base shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+          />
+          <div className="absolute top-1 right-1 bottom-1 flex items-center">
+            <Button
+              type="submit"
+              size="icon"
+              className={cn(
+                "h-10 w-10 rounded-lg bg-green-600 transition-all duration-300"
+              )}
+            >
+              {isPending ? (
+                <Spinner className="h-5 w-5 animate-spin" />
+              ) : (
+                <Send className="ml-0.5 h-5 w-5" />
+              )}
+            </Button>
           </div>
         </form>
       </div>
