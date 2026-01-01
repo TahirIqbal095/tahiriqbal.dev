@@ -43,7 +43,7 @@ export default function BlogsView({ blogs, tags }: BlogsViewProps) {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.2,
       },
     },
   };

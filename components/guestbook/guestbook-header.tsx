@@ -11,7 +11,7 @@ const guestbookConfig = {
     "Leave a thoughtful note — I read every message. Your feedback and kind words keep me motivated.",
 };
 
-export default function Header() {
+export default function GuestbookHeader() {
   const { data } = useSession();
   return (
     <section className="mx-auto max-w-2xl space-y-4 text-center">
