@@ -14,7 +14,7 @@ export default async function LandingPage() {
   const user = await leetcode.user("tahiriqbal095");
 
   return (
-    <div>
+    <div className="space-y-4">
       <BentoGrid className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-6 lg:gap-6">
         <BentoCard className="col-span-1">
           <TimeCard />

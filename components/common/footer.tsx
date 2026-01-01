@@ -10,7 +10,7 @@ export default function Footer() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className="text-muted-foreground absolute right-0 bottom-0 left-0 flex items-center justify-between border-t px-2 py-2"
+      className="text-muted-foreground flex items-center justify-between border-t px-2 py-2"
     >
       <div className="flex flex-col gap-1 text-[10px] md:text-xs">
         <p className="">
@@ -21,7 +21,7 @@ export default function Footer() {
             </span>
           </a>
         </p>
-        <p className="">© {new Date().getFullYear()} All rights reserved.</p>
+        <p>© {new Date().getFullYear()} All rights reserved.</p>
       </div>
       <div className="flex gap-3">
         {footerData.links.map((link, idx) => (

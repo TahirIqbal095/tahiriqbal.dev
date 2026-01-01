@@ -1,21 +1,13 @@
-"use client";
-
 import { BlogPostPreview } from "@/types/blogs";
 import { Link } from "next-view-transitions";
 import { ArrowRightIcon, Calendar } from "lucide-react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Tag from "../ui/tag";
-import { motion } from "motion/react";
 
 export default function BlogCard({ slug, frontmatter }: BlogPostPreview) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2 }}
-      className="bg-card flex h-full flex-col overflow-hidden rounded-md border"
-    >
+    <div className="bg-card flex h-full flex-col overflow-hidden rounded-md border">
       <div className="relative aspect-video overflow-hidden border-b">
         <Image
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -74,6 +66,6 @@ export default function BlogCard({ slug, frontmatter }: BlogPostPreview) {
           </Button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

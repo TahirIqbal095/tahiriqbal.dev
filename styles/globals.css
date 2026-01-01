@@ -126,6 +126,10 @@
   }
 }
 
+@utility no-scrollbar {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
 @layer utilities {
   .inner-shadow {
     box-shadow: var(--shadow-card);

@@ -28,9 +28,9 @@ export default function RootLayout({
       >
         <body>
           <ThemeProvider>
-            <div className="relative mx-auto min-h-screen max-w-7xl space-y-4">
+            <div className="relative mx-auto max-w-7xl">
               <Navbar />
-              <main className="w-full overflow-x-hidden px-2 pt-20 pb-8">
+              <main className="w-full overflow-x-hidden px-2 pt-20">
                 {children}
               </main>
             </div>
