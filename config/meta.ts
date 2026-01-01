@@ -50,6 +50,23 @@ export const pageMetadata: Record<string, PageMeta> = {
     ogImage: "/meta/blogs.png",
     twitterCard: "summary_large_image",
   },
+
+  "/guestbook": {
+    title: "Guestbook - Sign the Guestbook",
+    description:
+      "Leave a message in my guestbook and share your thoughts or feedback with me.",
+    keywords: [
+      "guestbook",
+      "messages",
+      "feedback",
+      "comments",
+      "visitor messages",
+      "programming",
+      "web development",
+    ],
+    ogImage: "/meta/guestbook.png",
+    twitterCard: "summary_large_image",
+  },
 };
 
 // Helper function to get metadata for a specific page
