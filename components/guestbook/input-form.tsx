@@ -4,30 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Send, Sparkles } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import { FormEvent, useState } from "react";
+import { AnimatePresence } from "motion/react";
+import { useActionState, useState } from "react";
 import Spinner from "../ui/spinner";
+import { addGuestbookEntry } from "@/actions/actions";
+import { useSession } from "@/lib/auth-client";
 
 export default function InputForm() {
-  const [text, setText] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const { data } = useSession();
+  const [state, formAction, isPending] = useActionState(
+    addGuestbookEntry,
+    null
+  );
   const [isFocused, setIsFocused] = useState(false);
-
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    setError("");
-    if (!text.trim()) {
-      setError("Please provide a message.");
-      return;
-    }
-
-    setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 2000));
-
-    setText("");
-    setSubmitting(false);
-  }
 
   return (
     <div className="relative w-full">
@@ -38,30 +27,32 @@ export default function InputForm() {
             isFocused ? "opacity-50" : "opacity-20"
           )}
         ></div>
-        <form onSubmit={handleSubmit} className="relative flex flex-col">
+        <form action={formAction} className="relative flex flex-col">
           <div className="relative flex items-center">
             <Input
-              value={text}
-              onChange={(e) => setText(e.target.value)}
+              name="message"
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               placeholder="Sign the guestbook..."
               className="border-0 bg-transparent py-6 pr-14 text-base shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
-              disabled={submitting}
+            />
+            <Input
+              name="userId"
+              value={data?.user.id}
+              className="invisible h-0 w-0"
             />
             <div className="absolute top-1 right-1 bottom-1 flex items-center">
               <Button
                 type="submit"
                 size="icon"
-                disabled={submitting || !text.trim()}
                 className={cn(
                   "h-10 w-10 rounded-lg transition-all duration-300",
-                  text.trim()
+                  state?.message
                     ? "bg-linear-to-r from-pink-500 to-purple-600 text-white shadow-md hover:scale-105 hover:shadow-lg"
                     : "bg-muted text-muted-foreground"
                 )}
               >
-                {submitting ? (
+                {isPending ? (
                   <Spinner className="h-5 w-5 animate-spin" />
                 ) : (
                   <Send className="ml-0.5 h-5 w-5" />
@@ -73,16 +64,11 @@ export default function InputForm() {
       </div>
 
       <AnimatePresence>
-        {error && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: "auto" }}
-            exit={{ opacity: 0, y: -10, height: 0 }}
-            className="text-destructive mt-2 flex items-center gap-2 px-2 text-sm font-medium"
-          >
-            <span className="bg-destructive inline-block h-1.5 w-1.5 rounded-full" />
-            {error}
-          </motion.div>
+        {state?.error && (
+          <span className="text-xs text-red-400">{state.error}</span>
+        )}
+        {state?.message && (
+          <span className="text-sm text-green-400">{state.message}</span>
         )}
       </AnimatePresence>
 

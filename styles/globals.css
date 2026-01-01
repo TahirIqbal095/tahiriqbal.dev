@@ -1,16 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
-
-/* @font-face {
-  font-family: "Hanken Grotesk";
-  src: url("/fonts/HankenGrotesk-Variable.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Hanken Grotesk Italic";
-  src: url("/fonts/HankenGrotesk-Italic-Variable.ttf") format("truetype");
-} */
+@plugin "tailwind-scrollbar";
 
 @custom-variant dark (&:is(.dark *));
 

@@ -4,7 +4,7 @@ import * as React from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { QUOTES } from "@/data/quotes";
 import { cn } from "@/lib/utils";
-import { RefreshCw, Quote as QuoteIcon } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 

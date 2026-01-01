@@ -5,18 +5,15 @@ import { Separator } from "../ui/separator";
 import { useSession } from "@/lib/auth-client";
 import InputForm from "./input-form";
 import { Activity } from "react";
+import { UserWithMessages } from "@/db/types";
+import Image from "next/image";
 
-interface SignGuestbookProps {
-  messages: {
-    user: string;
-    message: string;
-    date: string; // ISO date string
-  }[];
-}
-
-export default function SignGuestbook({ messages }: SignGuestbookProps) {
+export default function GuestbookList({
+  messages,
+}: {
+  messages: UserWithMessages[];
+}) {
   const { data } = useSession();
-  console.log(data);
   function initialsFromName(n: string) {
     if (!n) return "?";
     return n
@@ -27,16 +24,16 @@ export default function SignGuestbook({ messages }: SignGuestbookProps) {
       .toUpperCase();
   }
 
-  function formatDate(iso: string) {
+  function formatDate(iso: string | Date) {
     try {
-      const d = new Date(iso);
+      const d = iso instanceof Date ? iso : new Date(iso);
       return d.toLocaleDateString(undefined, {
         year: "numeric",
         month: "short",
         day: "numeric",
       });
     } catch {
-      return iso;
+      return typeof iso === "string" ? iso : iso.toString();
     }
   }
 
@@ -54,24 +51,37 @@ export default function SignGuestbook({ messages }: SignGuestbookProps) {
         </CardHeader>
         <Separator />
         <CardContent>
-          <div className="max-h-[60vh] overflow-x-hidden overflow-y-auto pb-8">
+          <div className="no-scrollbar max-h-[60vh] overflow-x-hidden overflow-y-auto pb-8">
             {messages.map((m, idx) => (
               <div
-                key={`${m.user}-${m.date}-${idx}`}
+                key={`${m.name}-${idx}`}
                 className="group flex items-start gap-2 rounded-lg p-3"
-                aria-label={`Message from ${m.user}`}
+                aria-label={`Message from ${m.name}`}
               >
-                <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium">
-                  {initialsFromName(m.user)}
-                </div>
+                {m.image ? (
+                  <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                    <Image
+                      src={m.image}
+                      alt={m.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium">
+                    {initialsFromName(m.name)}
+                  </div>
+                )}
                 <div className="flex-1">
                   <div className="flex items-baseline justify-between gap-4">
-                    <h4 className="text-xs">{m.user}</h4>
+                    <h4 className="text-xs">{m.name}</h4>
                     <time className="text-muted-foreground text-xs">
-                      {formatDate(m.date)}
+                      {formatDate(new Date(m.createdAt))}
                     </time>
                   </div>
-                  <p className="text-foreground mt-1 text-sm">{m.message}</p>
+                  <p className="text-foreground mt-1 text-sm">
+                    {m.userMessages.message}
+                  </p>
                 </div>
               </div>
             ))}
