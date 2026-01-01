@@ -8,14 +8,14 @@ export const experienceConfig = {
       period: "Jul 2023 - Aug 2025",
       location: "Kashmir University",
       workType: "On-campus",
-      description: "Completed a master's in computer science.",
+      description: "Completed master's in computer science.",
     },
     {
       title: "Full-stack Developer",
       period: "june 2025 - Sept 2025",
       location: "Rehbarpost",
       workType: "Internship",
-      description: "Did an Internship as a Full-stack Developer at Rehbarpost",
+      description: "Did an internship as a full-stack developer at Rehbarpost",
     },
     {
       title: "Frontend Developer",
@@ -23,7 +23,7 @@ export const experienceConfig = {
       location: "SmartHelio",
       workType: "Freelance",
       description:
-        "Engineered a production-grade React frontend for an AI chatbot.",
+        "Engineered a production-grade react frontend for an AI chatbot.",
     },
   ],
 };

@@ -4,7 +4,7 @@ export const leetcodeConfig = {
   totalMedium: 1974,
   totalHard: 895,
   easySolved: 51,
-  mediumSolved: 47,
+  mediumSolved: 51,
   hardSolved: 7,
   totalQuestions: 3887,
   totalSolved: 107,

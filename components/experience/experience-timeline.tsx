@@ -1,5 +1,5 @@
 "use client";
-import { BriefcaseBusiness, Calendar, MapPin } from "lucide-react";
+import { BriefcaseBusiness, Calendar } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { motion } from "motion/react";
 
@@ -27,7 +27,7 @@ const ExperienceTimeline = ({
           className="relative"
         >
           {/* Custom Dot */}
-          <span className="bg-background ring-primary/20 absolute top-0 -left-[32px] flex size-4 items-center justify-center rounded-full ring-2">
+          <span className="bg-background ring-primary/20 absolute top-0 -left-8 flex size-4 items-center justify-center rounded-full ring-2">
             <span className="bg-primary size-2 rounded-full" />
           </span>
 
@@ -58,7 +58,7 @@ const ExperienceTimeline = ({
             </div>
 
             {/* Description */}
-            <p className="text-muted-foreground text-xs leading-relaxed md:text-sm">
+            <p className="text-foreground text-xs leading-relaxed md:text-sm">
               {item.description}
             </p>
           </div>

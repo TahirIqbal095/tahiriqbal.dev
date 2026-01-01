@@ -47,7 +47,7 @@ export function LeetcodeStatsCard({ stats, submissions }: Props) {
       />
       <CardHeader className="relative pb-0">
         <div className="mb-1 flex items-center justify-between">
-          <CardTitle className="text-muted-foreground flex items-center gap-2 font-medium">
+          <CardTitle className="text-foreground flex items-center gap-2 font-medium">
             <Trophy className="h-3 w-3 text-[#FFA116]" />
             <span>LeetCode Stats</span>
           </CardTitle>
@@ -147,7 +147,7 @@ export function LeetcodeStatsCard({ stats, submissions }: Props) {
         </div>
       </CardContent>
       <CardFooter className="mt-4">
-        <h3 className="text-sm">Recent Submissions</h3>
+        <h3 className="text-foreground text-xs">Recent Submissions</h3>
         {submissions && <SubmissionTicker submissions={submissions} />}
       </CardFooter>
     </Card>
@@ -246,7 +246,7 @@ function LegendItem({
     <div className="flex w-full items-center justify-between text-xs">
       <div className="flex items-center gap-2">
         <div className={`h-2 w-2 rounded-full ${color}`} />
-        <span className="text-muted-foreground font-medium">{label}</span>
+        <span className="text-foreground font-medium">{label}</span>
       </div>
       <div className="font-mono">
         <span className="text-foreground font-semibold">{count}</span>

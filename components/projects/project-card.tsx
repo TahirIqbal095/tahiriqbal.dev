@@ -51,7 +51,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <h2 className="group-hover:text-primary text-xl leading-none font-semibold tracking-tight transition-colors">
               {project.title}
             </h2>
-            <div className="text-muted-foreground/50 flex gap-2">
+            <div className="text-muted-foreground flex gap-2 text-[11px]">
               {project.subTitle}
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Description */}
-        <p className="text-muted-foreground line-clamp-4 text-sm leading-relaxed">
+        <p className="text-foreground line-clamp-4 text-sm leading-relaxed">
           {project.description}
         </p>
 
