@@ -6,10 +6,12 @@ import { motion } from "motion/react";
 import { Link } from "next-view-transitions";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
+import { MobileNav } from "./mobile-nav";
+import { NavItem } from "@/types/nav";
 
-const pages = [
-  { name: "Blogs", href: "/blogs" },
-  { name: "Guestbook", href: "/guestbook" },
+const pages: NavItem[] = [
+  { title: "Blogs", href: "/blogs" },
+  { title: "Guestbook", href: "/guestbook" },
 ];
 
 export default function Navbar() {
@@ -30,14 +32,17 @@ export default function Navbar() {
       <Logo />
 
       <div className="flex items-center gap-4">
-        {pages.map((page, idx) => (
-          <Button key={idx} asChild variant="link">
-            <Link href={page.href} className="ml-2">
-              {page.name}
-            </Link>
-          </Button>
-        ))}
+        <div className="hidden md:flex md:gap-2">
+          {pages.map((page, idx) => (
+            <Button key={idx} asChild variant="link">
+              <Link href={page.href} className="ml-2">
+                {page.title}
+              </Link>
+            </Button>
+          ))}
+        </div>
         <ThemeToggleButton start="top-right" />
+        <MobileNav items={pages} className="md:hidden" />
       </div>
     </motion.nav>
   );
