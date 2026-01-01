@@ -3,6 +3,7 @@
 import { IconWrapper } from "./icon-wrapper";
 import { footerData } from "@/config/footer";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -21,7 +22,12 @@ export default function Footer() {
             </span>
           </a>
         </p>
-        <p>© {new Date().getFullYear()} All rights reserved.</p>
+        <p>
+          © {new Date().getFullYear()} All rights reserved. •{" "}
+          <Link href="/privacy" className="hover:underline">
+            Privacy Policy
+          </Link>
+        </p>
       </div>
       <div className="flex gap-3">
         {footerData.links.map((link, idx) => (
