@@ -5,8 +5,8 @@ export interface Quote {
 
 export const QUOTES: Quote[] = [
   {
-    text: "The only way to do great work is to love what you do.",
-    author: "Steve Jobs",
+    text: "",
+    author: "",
   },
   {
     text: "Innovation distinguishes between a leader and a follower.",

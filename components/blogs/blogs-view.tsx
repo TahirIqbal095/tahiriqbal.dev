@@ -97,7 +97,10 @@ export default function BlogsView({ blogs, tags }: BlogsViewProps) {
       </ItemVariants>
 
       <ItemVariants>
-        <QuoteCard />
+        <QuoteCard
+          quote={blogConfig.quote.q}
+          author={blogConfig.quote.author}
+        />
       </ItemVariants>
     </ContainerVariants>
   );

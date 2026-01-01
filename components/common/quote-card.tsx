@@ -1,33 +1,21 @@
-"use client";
-
-import * as React from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { QUOTES } from "@/data/quotes";
 import { cn } from "@/lib/utils";
-import { RefreshCw } from "lucide-react";
 import { Card } from "../ui/card";
-import { Button } from "../ui/button";
 
 interface QuoteCardProps {
+  quote: string;
+  author: string;
   className?: string;
 }
 
-export default function QuoteCard({ className }: QuoteCardProps) {
-  const [currentQuoteIndex, setCurrentQuoteIndex] = React.useState(0);
-  const [isAnimating, setIsAnimating] = React.useState(false);
-
-  const nextQuote = React.useCallback(() => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentQuoteIndex((prev) => (prev + 1) % QUOTES.length);
-  }, [isAnimating]);
-
-  const currentQuote = QUOTES[currentQuoteIndex];
-
+export default function QuoteCard({
+  className,
+  quote,
+  author,
+}: QuoteCardProps) {
   return (
     <Card
       className={cn(
-        "group border-muted relative overflow-hidden py-8 shadow",
+        "group border-muted relative overflow-hidden px-4 py-8 shadow",
         className
       )}
     >
@@ -40,40 +28,19 @@ export default function QuoteCard({ className }: QuoteCardProps) {
         </svg>
       </div>
 
-      <Button
-        onClick={nextQuote}
-        disabled={isAnimating}
-        aria-label="Next quote"
-        className="text-muted-foreground absolute top-0 right-0 z-50 cursor-pointer rounded-full p-3"
-        variant={"ghost"}
-      >
-        <RefreshCw className={cn("h-4 w-4", isAnimating && "animate-spin")} />
-      </Button>
       <div className="relative z-40 flex flex-col items-start gap-4">
         <div className="w-full">
-          <AnimatePresence
-            mode="wait"
-            onExitComplete={() => setIsAnimating(false)}
-          >
-            <motion.div
-              key={currentQuoteIndex}
-              initial={{ opacity: 0, y: 10, filter: "blur(5px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -10, filter: "blur(5px)" }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="flex flex-col gap-2"
-            >
-              <p className="text-primary/95 font-serif text-xl font-medium tracking-tight">
-                &ldquo;{currentQuote.text}&rdquo;
-              </p>
-              <footer className="flex items-center gap-2">
-                <div className="ml-auto h-px w-8 bg-neutral-300 dark:bg-neutral-700" />
-                <span className="text-muted-foreground text-[10px] font-medium md:text-sm">
-                  {currentQuote.author}
-                </span>
-              </footer>
-            </motion.div>
-          </AnimatePresence>
+          <div className="flex flex-col gap-2">
+            <p className="text-primary/95 font-serif text-xl font-medium tracking-tight">
+              &ldquo;{quote}&rdquo;
+            </p>
+            <footer className="flex items-center gap-2">
+              <div className="ml-auto h-px w-8 bg-neutral-300 dark:bg-neutral-700" />
+              <span className="text-muted-foreground text-[10px] font-medium md:text-sm">
+                {author}
+              </span>
+            </footer>
+          </div>
         </div>
       </div>
     </Card>

@@ -6,9 +6,10 @@ import GuestbookList from "./guestbook-list";
 import GuestbookHeader from "./guestbook-header";
 import { Separator } from "../ui/separator";
 import { UserWithMessages } from "@/db/types";
-import { Variants } from "motion/react";
 import { useSession } from "@/lib/auth-client";
 import { ContainerVariants, ItemVariants } from "../common/page-animation";
+import QuoteCard from "../common/quote-card";
+import { guestbookConfig } from "@/config/guestbook";
 
 export default function GuestbookView({
   messages,
@@ -34,6 +35,13 @@ export default function GuestbookView({
 
       <ItemVariants>
         {messages.length && <GuestbookList messages={messages} />}
+      </ItemVariants>
+
+      <ItemVariants>
+        <QuoteCard
+          quote={guestbookConfig.quote.q}
+          author={guestbookConfig.quote.author}
+        />
       </ItemVariants>
     </ContainerVariants>
   );

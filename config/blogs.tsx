@@ -1,4 +1,8 @@
 export const blogConfig = {
   title: "Blogs",
   description: "Insights, Stories, and Ideas on Engineering, and Programming.",
+  quote: {
+    q: "The only way to do great work is to love what you do.",
+    author: "Steve Jobs",
+  },
 };

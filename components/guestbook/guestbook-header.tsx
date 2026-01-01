@@ -4,12 +4,7 @@ import { signOut, useSession } from "@/lib/auth-client";
 import PageHeading from "../common/page-heading";
 import GoogleLoginButton from "./login-button";
 import { Button } from "../ui/button";
-
-const guestbookConfig = {
-  title: "Guestbook",
-  description:
-    "Leave a thoughtful note — I read every message. Your feedback and kind words keep me motivated.",
-};
+import { guestbookConfig } from "@/config/guestbook";
 
 export default function GuestbookHeader() {
   const { data } = useSession();
