@@ -7,8 +7,8 @@ import Tag from "../ui/tag";
 
 export default function BlogCard({ slug, frontmatter }: BlogPostPreview) {
   return (
-    <div className="bg-card flex h-full flex-col overflow-hidden rounded-md border">
-      <div className="relative aspect-video overflow-hidden border-b">
+    <div className="bg-card flex h-full flex-col gap-2 overflow-hidden rounded-md border">
+      <div className="relative aspect-video overflow-hidden bg-white">
         <Image
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           src={frontmatter.image}

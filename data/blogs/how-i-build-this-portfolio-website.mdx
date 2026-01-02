@@ -1,0 +1,104 @@
+---
+title: How I built this portfolio website
+description: A detailed look at the architecture, technologies, and design decisions behind my personal portfolio website.
+date: 2026-01-02
+tags: [nextjs, typescript, supabase, tailwindcss, architecture, portfolio]
+image: "/blogs/how-i-build-this-portfolio-website.png"
+isPublished: true
+---
+
+This portfolio was built as a small but complete web application, not as a static marketing page. The goal was to demonstrate how I design systems, choose tools, and implement real features using modern frontend and backend patterns.
+
+Rather than optimizing for visual complexity, I optimized for architectural clarity, type safety, and correctness.
+
+## Technology Stack and Rationale
+
+The application is written entirely in **TypeScript**. I treat TypeScript as a baseline requirement, not an enhancement, because it reduces ambiguity across UI, server logic, and database access.
+
+The framework is **Next.js 16** using the App Router. This allows me to rely heavily on Server Components, colocate data fetching with rendering, and avoid unnecessary client-side state. Routing, layouts, and metadata are all handled using the native file-based conventions.
+
+The project uses **Bun** as the runtime and package manager. Bun provides faster installs and a simpler development workflow without introducing additional tooling complexity.
+
+For styling, I used **Tailwind CSS v4** combined with **shadcn/ui**. Tailwind provides predictable, utility-based styling, while shadcn/ui offers accessible, composable components without locking me into a predefined design system. Animations are handled using **Motion** and are intentionally minimal primarily used for entrance transitions and small interaction cues.
+
+On the backend side, **Supabase** provides a hosted Postgres database. I use **Drizzle ORM** to define schemas and queries, ensuring end-to-end type safety. Authentication is implemented using **Better Auth**, which integrates cleanly with a server-first Next.js architecture and avoids client-heavy auth flows.
+
+## Application Architecture
+
+The application is structured around the Next.js App Router with a server-first mindset.
+
+**Server Components** are the default. Client Components are introduced only when browser-only APIs, interactivity, or animations are required. This keeps the JavaScript bundle small and shifts complexity to the server where it is easier to reason about.
+
+The application consists of three primary routes: the home page, the blogs page, and the guestbook page. A shared layout wraps these routes to provide consistent navigation and structure.
+
+All data fetching and mutations are handled on the server, either directly in Server Components or through server actions. There is no client-side data fetching layer such as React Query, because it is unnecessary for this scope.
+
+## Home Page Implementation
+
+The home page is a statically rendered page that introduces who I am and highlights selected projects.
+
+The focus here is layout, typography, and content hierarchy. Motion is used only for subtle entrance animations to prevent abrupt content shifts. There is no dynamic data or client-side state on this page.
+
+This page is intentionally simple. Its purpose is to communicate context quickly, not to demonstrate technical complexity.
+
+## Blogs Page
+
+The blogs page renders technical and engineering-focused articles. Content is statically generated and optimized for readability and SEO.
+
+Because the content does not change frequently, static rendering is the correct choice. This keeps load times low and avoids unnecessary server work.
+
+The blog system itself is deliberately minimal. I value clarity of content over elaborate CMS setups for a personal portfolio.
+
+## Guestbook: Authenticated, Stateful Feature
+
+The guestbook is the most important feature from a technical perspective. It demonstrates authentication, database writes, and protected server-side logic in a controlled scope.
+
+A user must authenticate before submitting a message. Authentication is handled using Better Auth, which keeps session handling and token management on the server.
+
+Once authenticated, a user can submit a message. Messages are stored in Postgres via Supabase and queried using Drizzle ORM.
+
+A simplified version of the database schema looks like this:
+
+```typescript
+import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+
+export const guestbook = pgTable("guestbook", {
+  id: serial("id").primaryKey(),
+  userName: text("user_name").notNull(),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+```
+
+Queries are fully typed, which means invalid fields or incorrect query shapes are caught at compile time rather than at runtime.
+
+All guestbook reads and writes happen on the server. The client only triggers actions and renders results. This avoids exposing database logic or auth state to the browser and keeps the mental model simple.
+
+## Styling and UI Decisions
+
+Styling is handled entirely through Tailwind CSS utilities and shadcn/ui components. This combination allows for rapid iteration while maintaining consistency and accessibility.
+
+I paid particular attention to typography, spacing, and contrast. These details often matter more than animations or visual effects when it comes to perceived quality.
+
+The UI avoids visual noise. There are no unnecessary gradients, shadows, or motion effects. Everything is designed to support the content, not compete with it.
+
+## Performance Considerations
+
+Performance is primarily achieved through architectural decisions rather than micro-optimizations.
+
+Using Server Components by default minimizes client-side JavaScript. Static rendering is used wherever possible. Database access is scoped and predictable.
+
+Animations are lightweight, and loading states are simple and unobtrusive. The site feels fast because it does less, not because it tries to hide slowness.
+
+## Key Takeaways
+
+Building this portfolio reinforced several principles I consistently apply in larger systems:
+
+- **Server-first architectures** reduce complexity.
+- **Type safety** across the stack pays dividends quickly.
+- **Small, complete features** demonstrate more skill than broad but shallow implementations.
+- **Good UI** is more about restraint than decoration.
+
+## Conclusion
+
+This portfolio reflects how I approach software engineering. Rather than building many features, I focused on building a few features correctly. That tradeoff is intentional, and it mirrors how I prefer to work on real-world systems.

@@ -1,0 +1,189 @@
+---
+title: Mastering DSA using Patterns
+description: A structured approach to mastering Data Structures and Algorithms by focusing on patterns rather than random problem-solving.
+date: 2025-11-23
+tags: [dsa, leetcode, patterns, interview-prep]
+image: "/blogs/mastering-dsa-using-patterns.png"
+isPublished: true
+---
+
+When I started preparing for data structures and algorithms seriously, random problem-solving did not scale. Solving problems without structure felt productive in the short term, but retention was poor and pattern recognition was slow.
+
+The turning point for me was switching to a pattern-based approach, specifically following the DSA patterns curated by [AlgoMaster](https://algomaster.io/practice/dsa-patterns). This post explains how I practice DSA using those patterns, how I use LeetCode effectively, and how I document patterns in my notebook to build long-term intuition.
+
+## Why a Pattern-Based Approach Works
+
+Most DSA interview problems are not novel. They are variations of a small number of core ideas applied under different constraints.
+
+Patterns help you:
+
+- Reduce cognitive load during problem-solving
+- Quickly classify a problem instead of brute-forcing ideas
+- Reuse proven templates instead of reinventing logic
+- Build intuition that transfers across problems
+
+Instead of asking "How do I solve this problem?", you start asking:
+
+**"What pattern does this problem belong to?"**
+
+That shift matters.
+
+## The Source of Patterns: AlgoMaster
+
+I follow the DSA pattern list from AlgoMaster. It organizes problems into well-defined categories such as:
+
+- Sliding Window
+- Two Pointers
+- Prefix Sum
+- Binary Search on Answer
+- Hashing / Frequency Map
+- Stack-based patterns
+- Tree DFS / BFS
+- Graph traversal
+- Dynamic Programming (1D, 2D, state transitions)
+- Greedy patterns
+
+Each pattern comes with:
+
+- A clear mental model
+- A set of canonical problems
+- Increasing difficulty progression
+
+This removes decision fatigue. I always know what to practice next.
+
+## My Practice Workflow
+
+My workflow is deliberately repetitive and structured.
+
+### Step 1: Pick One Pattern
+
+I focus on one pattern at a time, not multiple. For example, Sliding Window.
+
+### Step 2: Solve LeetCode Problems for That Pattern
+
+I practice problems from LeetCode that clearly fall under that pattern. I start with easy problems and move to medium and hard only after the core idea feels natural.
+
+While solving, I focus on:
+
+- Identifying constraints that imply the pattern
+- Writing the solution without looking at hints
+- Explaining the solution to myself out loud
+
+### Step 3: Identify the Pattern Explicitly
+
+After solving a problem, I do not move on immediately. I ask:
+
+- Why is this a sliding window problem?
+- What condition forces window expansion or contraction?
+- What would break this approach?
+
+This reflection step is critical.
+
+### Step 4: Write the Pattern and Problem in My Notebook
+
+I maintain a physical or digital notebook where I document:
+
+- The pattern name
+- The invariant maintained by the pattern
+- A generic template
+- The specific problem I solved
+- Edge cases and mistakes I made
+
+This notebook becomes a pattern reference, not a list of solved problems.
+
+## Example: Sliding Window Pattern
+
+**How I recognize it:**
+
+- The problem involves a contiguous subarray or substring
+- There is a condition that must be satisfied continuously
+- Brute force would be O(n²), but constraints require O(n)
+
+**Typical invariant:**
+
+A window `[left, right]` that maintains a condition while iterating once over the array.
+
+**Generic template (TypeScript):**
+
+```typescript
+let left = 0;
+let result = 0;
+
+for (let right = 0; right < arr.length; right++) {
+  // expand window
+  updateWindow(arr[right]);
+
+  while (windowIsInvalid()) {
+    // shrink window
+    removeFromWindow(arr[left]);
+    left++;
+  }
+
+  result = updateResult(left, right);
+}
+```
+
+**Example problem I document:**
+
+"Longest Substring Without Repeating Characters"
+
+**Key takeaway I write down:**
+
+The window grows greedily, but only shrinks when the invariant is violated. The window never moves backward.
+
+## Example: Two Pointers Pattern
+
+**How I recognize it:**
+
+- Input is sorted or can be sorted
+- We are comparing pairs or converging from ends
+- We want to reduce search space linearly
+
+**Typical use cases:**
+
+- Pair sums
+- Palindrome checks
+- Removing duplicates in-place
+
+**Canonical template:**
+
+```typescript
+let left = 0;
+let right = nums.length - 1;
+
+while (left < right) {
+  if (conditionMet(nums[left], nums[right])) {
+    // record answer
+    left++;
+    right--;
+  } else if (needLarger()) {
+    left++;
+  } else {
+    right--;
+  }
+}
+```
+
+**Notebook insight:**
+
+Two pointers work because every move strictly reduces the search space while preserving correctness.
+
+## Why This Approach Scales
+
+This method scales because:
+
+- Patterns repeat across hundreds of problems
+- Interview questions are pattern variations, not surprises
+- Revising patterns is faster than revising individual problems
+
+Instead of remembering 300 problems, I remember ~15 patterns.
+
+That is the real leverage.
+
+## Final Thoughts
+
+DSA is not about solving the maximum number of problems. If you are preparing for interviews, my advice is simple:
+
+**Stop solving problems randomly. Start solving patterns deliberately.**
+
+That shift changes everything.
