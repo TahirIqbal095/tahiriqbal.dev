@@ -10,7 +10,7 @@ export default function BlogCard({ slug, frontmatter }: BlogPostPreview) {
     <div className="bg-card flex h-full flex-col gap-2 overflow-hidden rounded-md border">
       <div className="relative aspect-video overflow-hidden bg-white">
         <Image
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-200 group-hover:scale-105"
           src={frontmatter.image}
           alt={frontmatter.title}
           fill

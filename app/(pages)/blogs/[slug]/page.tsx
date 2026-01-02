@@ -90,13 +90,15 @@ export default async function BlogPage({ params }: Props) {
           </Link>
         </Button>
         <div className="space-y-2">
-          <Image
-            src={blog.frontmatter.image}
-            alt={blog.frontmatter.title}
-            width={1200}
-            height={630}
-            className="rounded-md"
-          />
+          <div className="relative aspect-video overflow-hidden rounded-md bg-white">
+            <Image
+              src={blog.frontmatter.image}
+              alt={blog.frontmatter.title}
+              className="object-cover"
+              fill
+              loading="lazy"
+            />
+          </div>
           <h1 className="text-4xl leading-tight font-extrabold tracking-tighter sm:text-5xl">
             {blog.frontmatter.title}
           </h1>
