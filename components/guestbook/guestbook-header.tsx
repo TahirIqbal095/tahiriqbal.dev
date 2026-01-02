@@ -5,6 +5,7 @@ import PageHeading from "../common/page-heading";
 import GoogleLoginButton from "./login-button";
 import { Button } from "../ui/button";
 import { guestbookConfig } from "@/config/guestbook";
+import { LogOutIcon } from "lucide-react";
 
 export default function GuestbookHeader() {
   const { data } = useSession();
@@ -16,8 +17,13 @@ export default function GuestbookHeader() {
       />
       <div className="flex items-center justify-center gap-3">
         {data?.session ? (
-          <Button onClick={() => signOut()} variant={"outline"}>
+          <Button
+            className="text-foreground/80 hover:text-foreground cursor-pointer"
+            onClick={() => signOut()}
+            variant={"outline"}
+          >
             Logout
+            <LogOutIcon />
           </Button>
         ) : (
           <GoogleLoginButton />

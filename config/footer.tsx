@@ -11,7 +11,7 @@ export const footerData = {
     },
     {
       name: "Linkedin",
-      href: "https://linkedin.com/in/tahiriqbal",
+      href: "https://linkedin.com/in/tahiriqbal095",
       icon: <Linkedin size={20} />,
     },
   ],

@@ -31,7 +31,7 @@ export default function QuoteCard({
       <div className="relative z-40 flex flex-col items-start gap-4">
         <div className="w-full">
           <div className="flex flex-col gap-2">
-            <p className="text-primary/95 font-serif text-xl font-medium tracking-tight">
+            <p className="text-primary/95 font-serif text-lg font-medium tracking-tight md:text-xl">
               &ldquo;{quote}&rdquo;
             </p>
             <footer className="flex items-center gap-2">

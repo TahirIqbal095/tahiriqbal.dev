@@ -31,7 +31,7 @@ export default function RootLayout({
           <ThemeProvider>
             <div className="relative mx-auto max-w-7xl">
               <Navbar />
-              <main className="w-full overflow-x-hidden px-2 pt-20">
+              <main className="w-full overflow-hidden px-2 pt-20">
                 {children}
               </main>
             </div>

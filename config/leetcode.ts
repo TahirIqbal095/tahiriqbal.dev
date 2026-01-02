@@ -7,5 +7,5 @@ export const leetcodeConfig = {
   mediumSolved: 51,
   hardSolved: 7,
   totalQuestions: 3887,
-  totalSolved: 107,
+  totalSolved: 109,
 };
