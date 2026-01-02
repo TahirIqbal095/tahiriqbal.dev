@@ -1,4 +1,4 @@
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export const footerData = {
   title: "Design & Developed by",
@@ -15,4 +15,9 @@ export const footerData = {
       icon: <Linkedin size={20} />,
     },
   ],
+  mail: {
+    title: "Email",
+    email: "shahtahir786@gmail.com",
+    icon: <Mail size={20} />,
+  },
 };

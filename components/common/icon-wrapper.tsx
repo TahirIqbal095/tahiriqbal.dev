@@ -10,7 +10,7 @@ export const IconWrapper = ({ children }: { children: React.ReactNode }) => {
       transition={{ duration: 0.3 }}
       whileHover={{
         scale: 1.1,
-        transition: { duration: 0.3 },
+        transition: { duration: 0.1 },
       }}
       whileTap={{ scale: 0.9 }}
       className="cursor-pointer"

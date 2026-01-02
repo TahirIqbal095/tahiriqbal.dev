@@ -30,6 +30,9 @@ export default function Footer() {
         </p>
       </div>
       <div className="flex gap-3">
+        <a href={`mailto:${footerData.mail.email}`}>
+          <IconWrapper>{footerData.mail.icon}</IconWrapper>
+        </a>
         {footerData.links.map((link, idx) => (
           <a key={idx} href={link.href} target="_blank">
             <IconWrapper>{link.icon}</IconWrapper>
